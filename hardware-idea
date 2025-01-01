@@ -1,9 +1,14 @@
 parts
 -pcb with keyboard buttons connected to pico
--pico to emulate a usb keyboard 
+-joystick as mouse, maybe connact to zero's gpio?
+-pico to emulate a usb keyboard (https://learn.adafruit.com/diy-pico-mechanical-keyboard-with-fritzing-circuitpython/overview)
 -pico mounted with headers (easier to solder than a rp2040)
 -pico connected to RPI zero through bottom usb pin plates (on both pico and zero)
--2x SD card readers on PCB or on separate breakout boards (https://www.adafruit.com/product/4682)
+-2x SD card readers on PCB or on separate breakout boards (https://www.adafruit.com/product/4682) - might be able to mount straight onto pcb and direct connect to rpi' zero's gpio
 -display to use HDMI on zero and be powered by zero. if such a device exists 
    - this? https://www.waveshare.com/product/raspberry-pi/displays/3.5inch-rpi-lcd-a.htm
 -battery adapter???
+-lots of spring contact pins for connections
+
+
+-ideal: sd cards, keyboard and joystick mouse go through pico
