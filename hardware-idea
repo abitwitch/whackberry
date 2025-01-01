@@ -14,3 +14,7 @@ parts
 -ideal: sd cards, keyboard and joystick mouse go through pico
 -use matrix to collect input from keys: https://youtu.be/7-PoXmxeCmQ?si=Xg6-1_ptxsIwWaRl
    - 60% keyboard has ~61 keys. 8x8 matrix would be 64 keys
+
+
+https://www.adafruit.com/product/4697
+https://www.adafruit.com/product/504
