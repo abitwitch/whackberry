@@ -3,6 +3,7 @@ parts
 -pico to emulate a usb keyboard 
 -pico mounted with headers (easier to solder than a rp2040)
 -pico connected to RPI zero through bottom usb pin plates (on both pico and zero)
--2x SD card readers on PCB or on separate breakout boards (link...)
+-2x SD card readers on PCB or on separate breakout boards (https://www.adafruit.com/product/4682)
 -display to use HDMI on zero and be powered by zero. if such a device exists 
+   - this? https://www.waveshare.com/product/raspberry-pi/displays/3.5inch-rpi-lcd-a.htm
 -battery adapter???
