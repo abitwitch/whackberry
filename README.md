@@ -1,4 +1,128 @@
-# offlinepasswordmanager
+# whackberry
+Offline and disconnected cyberdeck for password managment. 
+
+
+
+# WhackberryPi
+Disconnected Cyberdeck for password management
+
+## Hardware
+- Raspberry Pi Zero v1.3 [link](https://www.adafruit.com/product/2885)
+- M5 CardKB (v1.1)
+- HDMI 5" Display [link](https://www.adafruit.com/product/2232)
+- Raspberry Pi Camera Module 3 [link](https://www.adafruit.com/product/5657)
+- Thru-hole 5-way Navigation switch (used as a mouse) [link](https://www.adafruit.com/product/504)
+- TODO: REMOVE AND REPLACE MicroSD card breakout board (x2) [link](https://www.adafruit.com/product/254)
+- ATECC608 Breakout Board ([link](https://www.adafruit.com/product/4314)
+- Infrared LED [link](https://www.adafruit.com/product/387)
+- Infrared Receiver Sensor [link](https://www.adafruit.com/product/157)
+- Raspberry Pi Pico (RP2040 - no wifi) [link](https://www.adafruit.com/product/5525)
+- At least 1 micro CD card
+- A Raspberry Pi with internet (for setup only)
+
+## SD card setup
+1. Download Official Raspberry Pi Imager
+2. Select Legacy, 32-bit - Debian Bullseye (released 2024-10-22)
+3. Flash the SD card and then access the files on the SD card
+4. Set up the display
+   1. Setup the display. Under `bootfs > config.txt`, add code snippet from (here)[https://learn.adafruit.com/adafruit-5-800x480-tft-hdmi-monitor-touchscreen-backpack/raspberry-pi-config]
+   2. Enable i2c. Under `bootfs > config.txt`, uncomment "dtparam=i2c_arm=on". Follow instructions [here](https://raspberrypi.stackexchange.com/questions/83457/can-i-enable-i2c-before-first-boot)
+
+## Configure the OS
+I suggest doing the configuartion from another pi with internet. Plug the SD card into a internet-connected Raspberry Pi and boot it.
+
+### Turn on boot to terminal by default (optional)
+1. In terminal type, `sudo raspi-config`
+2. `System Options > Boot / Auto login > Console Autologin > Finish`
+3. In subsequent boots, if you want a GUI, enter `startx` into the terminal
+
+### Updrade all apps
+- In teminal: `sudo apt update && sudo apt full-upgrade` (tried to see if would fix chromium on zero)
+
+### CarKB setup
+- Follow instructions [here](https://github.com/ian-antking/cardkb)
+
+### Camera Setup
+- Just plug and play
+- `libcamera-hello` to test
+- `libcamera-jpeg -o /path/to/file.jpg` to take a picture
+
+### Set up 5-way navi mouse
+Wiring
+1. Connect 3.3v output from the Raspberri Pi to the common pin. For me, the was the pin farthest from the little "L" on the back of the switch
+2. Connect 10k ohm resesistors to all the remaining pins and attatch to GPIO pins on the PI
+Software
+3. `pip3 install PyUserInput`
+```
+#this file has not been tested yet
+import time
+from pynput.mouse import Button, Controller
+mouse=Controller()
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+leftPin=10
+rightPin=10 #todo
+upPin=10 #todo
+downPin=10 #todo
+centerPin=10 #todo
+centerPin_prevval=GPIO.input(centerPin)==GPIO.HIGH
+while True:
+  if GPIO.input(leftPin)==GPIO.HIGH:
+    mouse.move(-1,0)
+  if GPIO.input(rightPin)==GPIO.HIGH:
+    mouse.move(1,0)
+  if GPIO.input(upPin)==GPIO.HIGH:
+    mouse.move(0,1)
+  if GPIO.input(leftPin)==GPIO.HIGH:
+    mouse.move(0,-1)
+  centerPin_curval=GPIO.input(centerPin)==GPIO.HIGH
+  if centerPin_curval!=centerPin_prevval:
+    centerPin_prevval=centerPin_curval
+    if centerPin_curval:
+      mouse.click(Button.left)
+  time.sleep(0.01)
+    
+```
+
+### Infrared Transmitter
+TODO
+
+
+### Infrared Reciever
+This part of the device is on an isolated device that emulates a keyboard when plugged into the computer.
+On a PC connected to the Pico
+1. Connect the Pico and flash it with [circuit python](https://circuitpython.org/board/raspberry_pi_pico/) (I used Thonny, you may need to start thonny with `sudo thonny`)
+2. Download adafruit_hid (found [here](https://github.com/adafruit/Adafruit_CircuitPython_HID))
+3. Extract the "adafruit_hid" folder from it and upload it to the Pico in the "lib" folder.
+4. 
+
+
+TODO
+- set up IR emmitter
+- set up Pico for IR receiver and keybaord emulator
+- set up security chip
+  - Instructions [here](https://learn.adafruit.com/adafruit-atecc608-breakout/python-circuitpython)
+  - too hard, not worth it
+- set up memory card readers
+- redo everything with an account called pi (not test)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Start system init (online) 
 1. Download the Raspberry Pi Imager from [here](https://www.raspberrypi.com/software/)
