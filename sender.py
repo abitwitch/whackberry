@@ -1,4 +1,4 @@
-#Pico IR reciever
+#Pico IR sender
 import board
 import time
 import array

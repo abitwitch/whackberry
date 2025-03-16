@@ -25,11 +25,22 @@ Disconnected Cyberdeck for password management
 2. Select Legacy, 32-bit - Debian Bullseye (released 2024-10-22)
 3. Flash the SD card and then access the files on the SD card
 4. Set up the display
-   1. Setup the display. Under `bootfs > config.txt`, add code snippet from (here)[https://learn.adafruit.com/adafruit-5-800x480-tft-hdmi-monitor-touchscreen-backpack/raspberry-pi-config]
+   1. Setup the display. Under `bootfs > config.txt`, add the following lines (more info [here](https://learn.adafruit.com/adafruit-5-800x480-tft-hdmi-monitor-touchscreen-backpack/raspberry-pi-config))
+       ```
+       hdmi_group=2
+       hdmi_mode=87
+       hdmi_cvt=800 480 60 6 0 0 0
+       hdmi_drive=1
+       max_usb_current=1
+       ```
    2. Enable i2c. Under `bootfs > config.txt`, uncomment "dtparam=i2c_arm=on". Follow instructions [here](https://raspberrypi.stackexchange.com/questions/83457/can-i-enable-i2c-before-first-boot)
 
 ## Configure the OS
-I suggest doing the configuartion from another pi with internet. Plug the SD card into a internet-connected Raspberry Pi and boot it.
+I suggest doing the configuartion from another pi with internet. Plug the SD card into a internet-connected Raspberry Pi and boot it. Follow the commands to set up your account and apply any updates. Reboot the device.
+
+### Enable i2c (optional)
+1. In terminal type, `sudo raspi-config`
+2. `Interface Options > I2C > Yes  (enable) > OK > Finish`
 
 ### Turn on boot to terminal by default (optional)
 1. In terminal type, `sudo raspi-config`
@@ -38,9 +49,12 @@ I suggest doing the configuartion from another pi with internet. Plug the SD car
 
 ### Updrade all apps
 - In teminal: `sudo apt update && sudo apt full-upgrade` (tried to see if would fix chromium on zero)
+- Install circuit python: `sudo pip3 install --break-system-packages adafruit-blinka`
+- Install PyUserInput for mouse: `sudo pip3 install PyUserInput pynput`
 
 ### CarKB setup
 - Follow instructions [here](https://github.com/ian-antking/cardkb)
+- *add `sudo` to `modprobe uinput`
 
 ### Camera Setup
 - Just plug and play
@@ -52,42 +66,15 @@ Wiring
 1. Connect 3.3v output from the Raspberri Pi to the common pin. For me, the was the pin farthest from the little "L" on the back of the switch
 2. Connect 10k ohm resesistors to all the remaining pins and attatch to GPIO pins on the PI
 Software
-3. `pip3 install PyUserInput`
-```
-#this file has not been tested yet
-import time
-from pynput.mouse import Button, Controller
-mouse=Controller()
-import RPi.GPIO as GPIO
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-leftPin=10
-rightPin=10 #todo
-upPin=10 #todo
-downPin=10 #todo
-centerPin=10 #todo
-centerPin_prevval=GPIO.input(centerPin)==GPIO.HIGH
-while True:
-  if GPIO.input(leftPin)==GPIO.HIGH:
-    mouse.move(-1,0)
-  if GPIO.input(rightPin)==GPIO.HIGH:
-    mouse.move(1,0)
-  if GPIO.input(upPin)==GPIO.HIGH:
-    mouse.move(0,1)
-  if GPIO.input(leftPin)==GPIO.HIGH:
-    mouse.move(0,-1)
-  centerPin_curval=GPIO.input(centerPin)==GPIO.HIGH
-  if centerPin_curval!=centerPin_prevval:
-    centerPin_prevval=centerPin_curval
-    if centerPin_curval:
-      mouse.click(Button.left)
-  time.sleep(0.01)
-    
-```
+1. 'sudo nano /etc/xdg/lxsession/LXDE-pi/autostart`
+2. Add this line to the end of the file, then save and exit: `@/home/user/navmouse/mouselauncher.sh`
+3. `mkdir /home/user/navmouse`
+4. Copy `mouse.py` and `navmouselauncher.sh` to `/home/user/navmouse`
+5. `sudo chmod +x /home/user/navmouse/*`
 
 ### Infrared Transmitter
 TODO
-
+LIRC (Linux Infrared Remote Control) https://learn.adafruit.com/using-an-ir-remote-with-a-raspberry-pi-media-center/lirc
 
 ### Infrared Reciever
 This part of the device is on an isolated device that emulates a keyboard when plugged into the computer.
@@ -104,8 +91,9 @@ TODO
 - set up security chip
   - Instructions [here](https://learn.adafruit.com/adafruit-atecc608-breakout/python-circuitpython)
   - too hard, not worth it
-- set up memory card readers
+- set up memory card readers, not doing
 - redo everything with an account called pi (not test)
+  - continue at "Configure the OS"
 
 
 
