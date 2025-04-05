@@ -2,9 +2,32 @@
 import board
 import pulseio
 import time
+import neopixel
+import usb_hid
+from adafruit_hid.keyboard import Keyboard
+from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS
+
+#Encryption params
+crypt_enctrypred=True
+crypt_key_size=512
+crypt_max_message_len=int(crypt_key_size/8)
+if crypt_enctrypred:
+  import adafruit_rsa
+  n=8767862938846381594650313054697746983928069591876800238285481550544557258422507548254419480327825342836282266357737913207126076040310449932346019584946389
+  e=65537
+  d=1101986466076836675391528886454145626235798239594262837218022056728802327503923703404608755143041395629372299306079820840352494950484580148243694946731933
+  p=100938987407801285524844194818085333928210226396754806059824237840355234402371
+  q=86862996786598817764387756169488827311801024412523665972377646011426676151559
+  private_key=adafruit_rsa.key.PrivateKey(n,e,d,p,q)
+  del n,e,d,p,q
 
 print("start.")
-pulses = pulseio.PulseIn(board.GP3, maxlen=200, idle_state=True)
+pulses = pulseio.PulseIn(board.MOSI, maxlen=200, idle_state=True)
+pixel = neopixel.NeoPixel(board.NEOPIXEL, 1)
+
+kbd = Keyboard(usb_hid.devices)
+layout = KeyboardLayoutUS(kbd)
+
 
 #Allows for n unique pulse lengths
 #0: start data stream
@@ -24,8 +47,6 @@ end_val=1
 inst_val=2
 minData_val=3
 pulse_increment=(pulse_max-pulse_min)/(n+3)
-#pulses per packet
-packet_size=10 #limitation of ir-ctl
 
 checksum=checksum_ver=0
 byte_part=byte=0
@@ -33,16 +54,32 @@ bytedata = bytearray()
 stream_status="ready"
 packet_status="ready"
 
-
 def bytearray_to_text(bytedata):
-  #todo add crypt
+  if crypt_enctrypred:
+    bytedata=decrypt_bytes(bytedata)     
   return(bytedata.decode("utf-8"))
 
+def decrypt_bytes(bytedata):
+  decrypted_bytedata = bytearray()
+  c=0
+  while c<(len(bytedata)/crypt_max_message_len):
+    fromindex=c*crypt_max_message_len
+    c+=1
+    toindex=min(len(bytedata),c*crypt_max_message_len)
+    decrypted_bytedata.extend(adafruit_rsa.decrypt(bytes(bytedata[fromindex:toindex]),private_key))
+  return(decrypted_bytedata)
+  
+
 def sendKeystrokes(string):
-  print(string)
-  #TODO
+  layout.write(string)
       
 while True:
+  #set LED
+  if packet_status=="receiving":
+    pixel.fill((255, 165, 0)) #Orange
+  else:
+    pixel.fill((0, 0, 0))    
+  #read pulse
   while len(pulses)>0:
     pulse=pulses.popleft()
     pulse_val=(pulse-pulse_min)/pulse_increment
@@ -60,17 +97,30 @@ while True:
         packet_status="receiving"
         stream_status="ready"
         checksum=checksum_ver=0
+        byte_part=byte=0
         bytedata = bytearray()
       elif stream_status=="checksum":
-        if checksum==checksum_ver:
-          bytearray_to_text(bytedata)
+        #finsih current stream
+        if checksum==checksum_ver and len(bytedata)!=0:
+          if crypt_enctrypred:
+            pixel.fill((0,0,255)) #Blue
+          else:
+            pixel.fill((0, 165, 0)) #Green
+          text=bytearray_to_text(bytedata)
+          pixel.fill((0, 165, 0)) #Green
+          sendKeystrokes(text)
+          time.sleep(1) #keep green and pause any other actions for a short time
         else:
+          pixel.fill((255, 0, 0)) #Red
           print("Error: bad checksum, exiting data stream.")
-        checksum=checksum_ver=0
-        bytedata = bytearray()
+          time.sleep(1) #keep red and pause any other actions for a short time          
         packet_status="ready"
         stream_status="ready"
+        checksum=checksum_ver=0
+        byte_part=byte=0
+        bytedata = bytearray()
       else:
+        #prepare for new packet
         stream_status="ready"
     elif 0 > pulse_val > n:
       print("Warning: unexpected pulse length, ignoring pulse.")
@@ -88,7 +138,6 @@ while True:
     else:
       pass #this is where any unexpected values or padding values used to buffer packets will end up. They can be ignored.
 
-  time.sleep(1)
+
   
 print("done.")
-
