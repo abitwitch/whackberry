@@ -1,3 +1,4 @@
+
 #Pico IR sender
 import board
 import time
@@ -5,6 +6,16 @@ import array
 import pwmio
 import pigpio
 import os
+
+#Encryption params
+crypt_enctrypred=True
+crypt_key="/home/user/ir-sender/publickey.pem"
+crypt_key_size=512
+crypt_max_message_len=int(crypt_key_size/8)-11
+if crypt_enctrypred:
+  from cryptography.hazmat.primitives.asymmetric import rsa
+  from cryptography.hazmat.primitives.asymmetric import padding
+  from cryptography.hazmat.primitives import serialization
 
 #Allows for n unique pulse lengths
 #0: start data stream
@@ -34,11 +45,43 @@ minDataPulse=(3*pulse_increment)+pulse_min
 
 basefilepath="/mnt/ramdisk/packet"
 
+def gen_new_key():
+  private_key = rsa.generate_private_key(
+    public_exponent=65537,
+    key_size=crypt_key_size, #2048 or more is required for good security, but will be too slow on the QTPy RP2040. At 512 key size, each 53 (64 - 11 padding) byte decrypt takes about 0.8 seconds
+  )
+  public_key = private_key.public_key()
+  pem = public_key.public_bytes(
+    encoding=serialization.Encoding.PEM,
+    format=serialization.PublicFormat.SubjectPublicKeyInfo
+  )
+  with open("publickey.pem","wb") as f:
+    f.write(pem)
+  print("Transer this to QTPy.")
+  print(f"n={private_key.private_numbers().public_numbers.n}")
+  print(f"e={private_key.private_numbers().public_numbers.e}")
+  print(f"d={private_key.private_numbers().d}")
+  print(f"p={private_key.private_numbers().p}")
+  print(f"q={private_key.private_numbers().q}")
+
 def text_to_bytearray(text):
-  #todo add crypt
   bytedata = bytearray()
   bytedata.extend(map(ord, text))
+  if crypt_enctrypred:
+    bytedata=encrypt_bytes(bytedata)
   return(bytedata)
+  
+def encrypt_bytes(bytedata):
+  encrypted_bytedata = bytearray()
+  with open(crypt_key, "rb") as f:
+    public_key=serialization.load_pem_public_key(f.read())
+  c=0
+  while c<(len(bytedata)/crypt_max_message_len):
+    fromindex=c*crypt_max_message_len
+    c+=1
+    toindex=min(len(bytedata),c*crypt_max_message_len)
+    encrypted_bytedata.extend(public_key.encrypt(bytes(bytedata[fromindex:toindex]),padding.PKCS1v15()))
+  return(encrypted_bytedata)
 
 def bytearray_to_pulsepacket(bytedata: bytearray, instruction=False):    
   pulses = []
@@ -152,10 +195,11 @@ def send_files(packetcnt):
   os.system("rm /mnt/ramdisk/packet*")
   time.sleep(0.1)
 
-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-#text="ab"
-bytedata=text_to_bytearray(text)
-
-while True:
+if __name__=="__main__":
+  #text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  text="hello world"
+  bytedata=text_to_bytearray(text)
   send_data_stream(bytedata)
-  time.sleep(3)
+
+
+
