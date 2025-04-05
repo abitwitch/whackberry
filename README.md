@@ -73,20 +73,26 @@ Software
 5. `sudo chmod +x /home/user/navmouse/*`
 
 ### Infrared Transmitter
-TODO
-LIRC (Linux Infrared Remote Control) https://learn.adafruit.com/using-an-ir-remote-with-a-raspberry-pi-media-center/lirc
+TODO (using sender.py)
 
 ### Infrared Reciever
 This part of the device is on an isolated device that emulates a keyboard when plugged into the computer.
 On a PC connected to the Pico
-1. Connect the Pico and flash it with [circuit python](https://circuitpython.org/board/raspberry_pi_pico/) (I used Thonny, you may need to start thonny with `sudo thonny`)
-2. Download adafruit_hid (found [here](https://github.com/adafruit/Adafruit_CircuitPython_HID))
-3. Extract the "adafruit_hid" folder from it and upload it to the Pico in the "lib" folder.
-4. 
+1. Download circuit python for the QTPy RP2040 ([link](https://circuitpython.org/board/adafruit_qtpy_rp2040/)) (I used CircuitPython 9.2.6)
+2. Download the circuit python bundle ([link](https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases/tag/20250319)) (I used 'March 19, 2025 auto-release')
+3. While holding down the `BOOT` button on the QTPy, connect it to the PC.
+4. Copy the "uf2" file you downloaded in step 1 to the device. You should see `INDEX.HTM` and `INFO_UF2.TXT` there already. Wait for the device to reboot.
+5. Unzip the folder from step 2 and copy the following folders and file to the `lib` folder of the QTPy.
+   `adafruit_hid`, `adafruit_pixelbuf.mpy`, `neopixel.mpy`, `adafruit_rsa`, `adafruit_logging.mpy`, `adafruit_binascii`, `adafruit_hashlib` 
+8. TODO: copy code.py
+9. TODO: gen new key
+10. TODO: copy private_key.json
 
 
 TODO
 - set up IR emmitter
+  - next: sender: turn to command line tool (bash file, python -help material, a way to access gen_new_key)
+  - next: reciever: put privateKey in json
 - set up Pico for IR receiver and keybaord emulator
 - set up security chip
   - Instructions [here](https://learn.adafruit.com/adafruit-atecc608-breakout/python-circuitpython)
