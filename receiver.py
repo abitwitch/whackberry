@@ -13,13 +13,10 @@ crypt_key_size=512
 crypt_max_message_len=int(crypt_key_size/8)
 if crypt_enctrypred:
   import adafruit_rsa
-  n=8767862938846381594650313054697746983928069591876800238285481550544557258422507548254419480327825342836282266357737913207126076040310449932346019584946389
-  e=65537
-  d=1101986466076836675391528886454145626235798239594262837218022056728802327503923703404608755143041395629372299306079820840352494950484580148243694946731933
-  p=100938987407801285524844194818085333928210226396754806059824237840355234402371
-  q=86862996786598817764387756169488827311801024412523665972377646011426676151559
-  private_key=adafruit_rsa.key.PrivateKey(n,e,d,p,q)
-  del n,e,d,p,q
+  import json
+  with open("privatekey.json","r") as f:
+    pk_json=json.loads(f.read())
+  private_key=adafruit_rsa.key.PrivateKey(pk_json["n"],pk_json["e"],pk_json["d"],pk_json["p"],pk_json["q"])
 
 print("start.")
 pulses = pulseio.PulseIn(board.MOSI, maxlen=200, idle_state=True)
@@ -27,7 +24,6 @@ pixel = neopixel.NeoPixel(board.NEOPIXEL, 1)
 
 kbd = Keyboard(usb_hid.devices)
 layout = KeyboardLayoutUS(kbd)
-
 
 #Allows for n unique pulse lengths
 #0: start data stream
@@ -137,7 +133,3 @@ while True:
         byte_part=byte=0
     else:
       pass #this is where any unexpected values or padding values used to buffer packets will end up. They can be ignored.
-
-
-  
-print("done.")
