@@ -76,9 +76,13 @@ Software
 1. `mkdir /home/user/ir-sender`
 2. Copy `ir-sender` to the folder `/home/user/ir-sender`
 3. `chmod +x /home/user/ir-sender`
-4. `export PATH=$PATH:/home/user/ir-sender`
-5. Generate new key: `ir-sender --genkey`
-6. Copy the contents of the json and use it when setting up the Infrared Reciever
+4. Add these lines `/home/user/.profile`
+   `if [ -d "$HOME/ir-sender" ] ; then
+    PATH="$PATH:$HOME/ir-sender"
+    fi
+   `
+6. Generate new key: `ir-sender --genkey`
+7. Copy the contents of the json and use it when setting up the Infrared Reciever
 
 ### Infrared Reciever
 This part of the device is on an isolated device that emulates a keyboard when plugged into the computer.
