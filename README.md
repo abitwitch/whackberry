@@ -77,10 +77,11 @@ Software
 2. Copy `ir-sender` to the folder `/home/user/ir-sender`
 3. `chmod +x /home/user/ir-sender`
 4. Add these lines `/home/user/.profile`
-   `if [ -d "$HOME/ir-sender" ] ; then
-    PATH="$PATH:$HOME/ir-sender"
-    fi
-   `
+   ```
+   if [ -d "$HOME/ir-sender" ] ; then
+   PATH="$PATH:$HOME/ir-sender"
+   fi
+   ```
 6. Generate new key: `ir-sender --genkey`
 7. Copy the contents of the json and use it when setting up the Infrared Reciever
 
@@ -105,6 +106,7 @@ TODO
 - set up memory card readers, not doing
 - redo everything with an account called pi (not test)
   - continue at "Configure the OS"
+- Nice to have: ir-sender GUI using tkinter
 
 
 
