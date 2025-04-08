@@ -73,7 +73,12 @@ Software
 5. `sudo chmod +x /home/user/navmouse/*`
 
 ### Infrared Transmitter
-TODO (using sender.py)
+1. `mkdir /home/user/ir-sender`
+2. Copy `ir-sender` to the folder `/home/user/ir-sender`
+3. `chmod +x /home/user/ir-sender`
+4. `export PATH=$PATH:/home/user/ir-sender`
+5. Generate new key: `ir-sender --genkey`
+6. Copy the contents of the json and use it when setting up the Infrared Reciever
 
 ### Infrared Reciever
 This part of the device is on an isolated device that emulates a keyboard when plugged into the computer.
@@ -84,15 +89,11 @@ On a PC connected to the Pico
 4. Copy the "uf2" file you downloaded in step 1 to the device. You should see `INDEX.HTM` and `INFO_UF2.TXT` there already. Wait for the device to reboot.
 5. Unzip the folder from step 2 and copy the following folders and file to the `lib` folder of the QTPy.
    `adafruit_hid`, `adafruit_pixelbuf.mpy`, `neopixel.mpy`, `adafruit_rsa`, `adafruit_logging.mpy`, `adafruit_binascii`, `adafruit_hashlib` 
-8. TODO: copy code.py
-9. TODO: gen new key
-10. TODO: copy private_key.json
+8. Copy the contents of the `ir-receiver-code.py` to `code.py`
+9. Create a new file at the top level called `private_key.json` and put the json contents in it generated when setting up the Infrared Transmitter
 
 
 TODO
-- set up IR emmitter
-  - next: sender: turn to command line tool (bash file, python -help material, a way to access gen_new_key)
-  - next: reciever: put privateKey in json
 - set up Pico for IR receiver and keybaord emulator
 - set up security chip
   - Instructions [here](https://learn.adafruit.com/adafruit-atecc608-breakout/python-circuitpython)
