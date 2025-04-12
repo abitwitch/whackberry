@@ -73,7 +73,8 @@ Software
 5. `sudo chmod +x /home/user/navmouse/*`
 
 ### Infrared Transmitter
-1. `mkdir /home/user/ir-sender`
+1. Create a RAM disk for storing output:
+   1. Add `newramdisk  /mnt/ramdisk  tmpfs  rw,size=1M  0   0` to `/etc/fstab``mkdir /home/user/ir-sender`
 2. Copy `ir-sender` to the folder `/home/user/ir-sender`
 3. `chmod +x /home/user/ir-sender`
 4. Add these lines `/home/user/.profile`
