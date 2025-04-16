@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "Whackberry_Parts_Library")(type "KiCad")(uri "${KIPRJMOD}/Whackberry_Parts_Library.pretty")(options "")(descr ""))
+)

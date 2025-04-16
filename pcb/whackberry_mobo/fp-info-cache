@@ -1,4 +1,4 @@
-24412701514918402
+24416190957994037
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -98594,3 +98594,17 @@ Varistor VF
 0
 2
 2
+Whackberry_Parts_Library
+Modified_Raspberry_Pi_Zero_Socketed_THT_FaceDown_MountingHoles
+Raspberry Pi Zero using through hole straight pin socket, 2x20, 2.54mm pitch, https://www.raspberrypi.org/documentation/hardware/raspberrypi/mechanical/rpi_MECH_Zero_1p2.pdf
+raspberry pi zero through hole
+0
+42
+42
+Whackberry_Parts_Library
+QT_Py
+
+
+0
+0
+0
