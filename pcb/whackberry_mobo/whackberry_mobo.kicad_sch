@@ -1168,6 +1168,300 @@
 				)
 			)
 		)
+		(symbol "Whackberry_Symbols_Library:GroveFemaleHeader_114020164"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 19.05 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Value" "GroveFemaleHeader_114020164"
+				(at 19.05 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Footprint" "Whackberry_Parts_Library:GroveFemaleHeader_114020164"
+				(at 19.05 -94.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://files.seeedstudio.com/products/114020164/res/Grove%20Female%20Header%20-%20SMD-4P-2.0mm-90D%20Datasheet.pdf"
+				(at 19.05 -194.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Description" "Seeed Studio Accessories Grove Female Header - SMD-4P-2.0mm-90D-20Pcs"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Height" "5.45"
+				(at 19.05 -394.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Part Number" "713-114020164"
+				(at 19.05 -494.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Seeed-Studio/114020164?qs=7MVldsJ5Uayw%2FOfizq4F8w%3D%3D"
+				(at 19.05 -594.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Name" "Seeed Studio"
+				(at 19.05 -694.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Part_Number" "114020164"
+				(at 19.05 -794.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(symbol "GroveFemaleHeader_114020164_1_1"
+				(rectangle
+					(start 5.08 2.54)
+					(end 17.78 -10.16)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 22.86 0 180)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 22.86 -2.54 180)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 22.86 -5.08 180)
+					(length 5.08)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 22.86 -7.62 180)
+					(length 5.08)
+					(name "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 0 0)
+					(length 5.08)
+					(name "MP1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "MP1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 0)
+					(length 5.08)
+					(name "MP2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "MP2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Whackberry_Symbols_Library:KardKB"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U?"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Whackberry_Parts_Library:CardKB"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "KardKB_0_1"
+				(rectangle
+					(start -3.81 2.54)
+					(end 7.62 -5.08)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "KardKB_1_1"
+				(text "CardKB"
+					(at 1.778 -2.54 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
 		(symbol "Whackberry_Symbols_Library:QTPy"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -2286,7 +2580,7 @@
 							)
 						)
 					)
-					(number "P22"
+					(number "PP22"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2304,7 +2598,230 @@
 							)
 						)
 					)
-					(number "P23"
+					(number "PP23"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Whackberry_Symbols_Library:USBa_Port_87583-0010BHLF"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 19.05 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Value" "USBa_Port_87583-0010BHLF"
+				(at 19.05 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+				)
+			)
+			(property "Footprint" "Whackberry_Parts_Library:USBa_Port_875830010BHLF"
+				(at 19.05 -94.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://cdn.amphenol-cs.com/media/wysiwyg/files/documentation/datasheet/ssio/ssio_pcie_gen3.pdf"
+				(at 19.05 -194.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Description" "USB 2.0, Input Output Connectors, Receptacle, Type A, Standard, Right Angle, Surface Mount, Single Deck, 4 Positions"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Height" "7.94"
+				(at 19.05 -394.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Part Number" ""
+				(at 19.05 -494.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Mouser Price/Stock" ""
+				(at 19.05 -594.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Name" "Amphenol Communications Solutions"
+				(at 19.05 -694.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer_Part_Number" "87583-0010BHLF"
+				(at 19.05 -794.92 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left top)
+					(hide yes)
+				)
+			)
+			(symbol "USBa_Port_87583-0010BHLF_1_1"
+				(rectangle
+					(start 5.08 2.54)
+					(end 17.78 -10.16)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 22.86 0 180)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 22.86 -2.54 180)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 22.86 -5.08 180)
+					(length 5.08)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 22.86 -7.62 180)
+					(length 5.08)
+					(name "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 0 0)
+					(length 5.08)
+					(name "MH1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 0)
+					(length 5.08)
+					(name "MH2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2380,6 +2897,138 @@
 			(project ""
 				(path "/efde2cb3-16ef-4cc9-81c7-d9f2adf33283"
 					(reference "R1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Whackberry_Symbols_Library:USBa_Port_87583-0010BHLF")
+		(at 231.14 73.66 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0c4b81ac-8191-4bb6-a17f-c78a07ebdb9a")
+		(property "Reference" "J2"
+			(at 242.57 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "USBa_Port_87583-0010BHLF"
+			(at 242.57 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Whackberry_Parts_Library:USBa_Port_875830010BHLF"
+			(at 250.19 168.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://cdn.amphenol-cs.com/media/wysiwyg/files/documentation/datasheet/ssio/ssio_pcie_gen3.pdf"
+			(at 250.19 268.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "USB 2.0, Input Output Connectors, Receptacle, Type A, Standard, Right Angle, Surface Mount, Single Deck, 4 Positions"
+			(at 231.14 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "7.94"
+			(at 250.19 468.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" ""
+			(at 250.19 568.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" ""
+			(at 250.19 668.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "Amphenol Communications Solutions"
+			(at 250.19 768.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "87583-0010BHLF"
+			(at 250.19 868.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "43b9b0af-54a4-4d95-a4b3-efb8517e653e")
+		)
+		(pin "1"
+			(uuid "4fb70e7f-8719-4a50-91bb-8576487cb8e6")
+		)
+		(pin "5"
+			(uuid "5c054898-5469-459b-bc05-e7f067a2bf2b")
+		)
+		(pin "4"
+			(uuid "2b845246-11e2-4148-8833-111866d64ff3")
+		)
+		(pin "6"
+			(uuid "4d83eb37-00a4-446f-b13c-adf65d535f65")
+		)
+		(pin "3"
+			(uuid "8be14e65-a38a-4e61-85e1-b0dcaad207d7")
+		)
+		(instances
+			(project ""
+				(path "/efde2cb3-16ef-4cc9-81c7-d9f2adf33283"
+					(reference "J2")
 					(unit 1)
 				)
 			)
@@ -2512,6 +3161,390 @@
 			(project ""
 				(path "/efde2cb3-16ef-4cc9-81c7-d9f2adf33283"
 					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Whackberry_Symbols_Library:RPi_Zero")
+		(at 107.95 36.83 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5b7ab374-ea08-4db7-8f1e-28335fe94051")
+		(property "Reference" "U1"
+			(at 113.03 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "~"
+			(at 113.03 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Whackberry_Parts_Library:Modified_Raspberry_Pi_Zero_Socketed_THT_FaceDown_MountingHoles"
+			(at 116.586 88.9 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 107.95 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 107.95 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "26"
+			(uuid "02b2ce22-a052-4189-adfe-9c05e741ce8c")
+		)
+		(pin "21"
+			(uuid "bbf94ae1-137b-4549-9ace-8e88726a720c")
+		)
+		(pin "PP23"
+			(uuid "061c5fa1-4375-43cc-8aab-1645f6f32627")
+		)
+		(pin "13"
+			(uuid "3a7929bd-1d98-4ef1-a1d8-375a6021ed7b")
+		)
+		(pin "33"
+			(uuid "358a3227-5c0d-4fa7-9fca-c8bab8e06c72")
+		)
+		(pin "3"
+			(uuid "8bd604f6-df07-452d-b899-b8ca22722630")
+		)
+		(pin "18"
+			(uuid "563aa025-9f38-40b5-af33-e940e2f34201")
+		)
+		(pin "32"
+			(uuid "c93c1d04-91a0-4abe-b84a-7d07922ab2f2")
+		)
+		(pin "9"
+			(uuid "4c02f4a9-f43c-4af7-a288-7207c20d20dc")
+		)
+		(pin "8"
+			(uuid "3a0150d3-b8ec-41e3-a0d6-d9547eb3e3da")
+		)
+		(pin "19"
+			(uuid "e47ad496-e34e-4b64-98eb-8832582f6056")
+		)
+		(pin "20"
+			(uuid "8dea91de-ba33-4366-8327-f492b4c77466")
+		)
+		(pin "29"
+			(uuid "c4f3ecb2-ac5d-4cae-b788-aa54f330ca3c")
+		)
+		(pin "39"
+			(uuid "03d98a68-074e-4dea-8d53-233b0dd0e749")
+		)
+		(pin "34"
+			(uuid "29ec9c08-905a-489f-8aed-ddb8d2dbaf80")
+		)
+		(pin "PP22"
+			(uuid "b02747f8-156d-4caf-80b8-6fce243b01a5")
+		)
+		(pin "27"
+			(uuid "9c107b21-bcbe-424e-ad9f-b334d2146a21")
+		)
+		(pin "28"
+			(uuid "2c6b8e1d-5b87-4a9e-8666-714241a2b8b2")
+		)
+		(pin "40"
+			(uuid "e6ecb40a-3186-4556-8278-efa1a542df94")
+		)
+		(pin "25"
+			(uuid "9372bae0-f4e3-4f03-bf8c-9a71974ba6a4")
+		)
+		(pin "6"
+			(uuid "9c8d1ba3-1c59-4643-9000-1beb8c47a817")
+		)
+		(pin "24"
+			(uuid "e796eeb7-61a5-456c-aeba-60f0a6581519")
+		)
+		(pin "5"
+			(uuid "b31b7bba-056b-4b9a-b58a-357cf13945df")
+		)
+		(pin "11"
+			(uuid "5f474bec-8c3a-4709-b820-1cea5806ac16")
+		)
+		(pin "10"
+			(uuid "5bef4ccb-e4e8-4c88-9866-1d34236acf22")
+		)
+		(pin "1"
+			(uuid "1e55ad03-92cd-4779-824c-fc1aed6194dd")
+		)
+		(pin "14"
+			(uuid "6463487a-2c2b-44f0-a14a-58885e89e955")
+		)
+		(pin "16"
+			(uuid "af45e5df-3fde-44e7-9dfa-4e1465707a9f")
+		)
+		(pin "30"
+			(uuid "603a9faf-3caf-4428-aa8a-e5b71b77110e")
+		)
+		(pin "2"
+			(uuid "313570f6-d9f9-411e-b776-24b033eec149")
+		)
+		(pin "7"
+			(uuid "063905b8-3c7a-4651-a085-bee8b0c23f37")
+		)
+		(pin "36"
+			(uuid "3add20b1-db2b-4ff9-a5fa-f217c1e68e1a")
+		)
+		(pin "23"
+			(uuid "611c7e2f-dc91-4b9f-8589-a90983f5cd7a")
+		)
+		(pin "4"
+			(uuid "2ae69797-bf7d-4266-9392-069b79d02cf1")
+		)
+		(pin "15"
+			(uuid "b98efc0b-1b53-4eb9-9328-d293ba581884")
+		)
+		(pin "31"
+			(uuid "3d3ca836-1cf3-47bc-bfa7-0943b77c1968")
+		)
+		(pin "12"
+			(uuid "536417dc-5675-4506-80a6-b7376c408a68")
+		)
+		(pin "17"
+			(uuid "68aef500-f4dc-4623-b443-13ca08d1af38")
+		)
+		(pin "37"
+			(uuid "44faaea7-2745-481f-8699-77290a1f4d76")
+		)
+		(pin "22"
+			(uuid "47b53b5c-2332-4752-9795-7572b9d86fc3")
+		)
+		(pin "38"
+			(uuid "3ecb9e09-6bcc-412c-8fa6-e1200e481b38")
+		)
+		(pin "35"
+			(uuid "f1f99beb-1faf-4fd7-9bd2-1d9643b7e662")
+		)
+		(instances
+			(project ""
+				(path "/efde2cb3-16ef-4cc9-81c7-d9f2adf33283"
+					(reference "U1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Whackberry_Symbols_Library:KardKB")
+		(at 64.77 147.32 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5fe68477-87a4-47be-a8ef-1f49cc562099")
+		(property "Reference" "U6"
+			(at 73.66 147.9549 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "~"
+			(at 73.66 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Whackberry_Parts_Library:CardKB"
+			(at 64.77 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 64.77 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 64.77 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project ""
+				(path "/efde2cb3-16ef-4cc9-81c7-d9f2adf33283"
+					(reference "U6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Whackberry_Symbols_Library:GroveFemaleHeader_114020164")
+		(at 166.37 134.62 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "70d23de7-5082-4d46-8a96-801dcd4bcc24")
+		(property "Reference" "J1"
+			(at 177.8 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GroveFemaleHeader_114020164"
+			(at 177.8 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Whackberry_Parts_Library:GroveFemaleHeader_114020164"
+			(at 185.42 229.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://files.seeedstudio.com/products/114020164/res/Grove%20Female%20Header%20-%20SMD-4P-2.0mm-90D%20Datasheet.pdf"
+			(at 185.42 329.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Description" "Seeed Studio Accessories Grove Female Header - SMD-4P-2.0mm-90D-20Pcs"
+			(at 166.37 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Height" "5.45"
+			(at 185.42 529.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Part Number" "713-114020164"
+			(at 185.42 629.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Seeed-Studio/114020164?qs=7MVldsJ5Uayw%2FOfizq4F8w%3D%3D"
+			(at 185.42 729.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Name" "Seeed Studio"
+			(at 185.42 829.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer_Part_Number" "114020164"
+			(at 185.42 929.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(pin "4"
+			(uuid "80238213-5e06-4a80-aad3-01ead781f4d9")
+		)
+		(pin "MP1"
+			(uuid "394a117d-f3f5-48fd-b8a2-b6b2f45c5466")
+		)
+		(pin "2"
+			(uuid "030cbf53-6f48-4eb1-ae45-a9a4e7dad777")
+		)
+		(pin "1"
+			(uuid "777d5b0d-0fbb-4080-8aab-ae09ac7c9d51")
+		)
+		(pin "3"
+			(uuid "79bbaa49-1dd9-4166-9c30-36d3ae6fe5f4")
+		)
+		(pin "MP2"
+			(uuid "90fba2fd-fd8c-4577-b439-1bd24008a75f")
+		)
+		(instances
+			(project ""
+				(path "/efde2cb3-16ef-4cc9-81c7-d9f2adf33283"
+					(reference "J1")
 					(unit 1)
 				)
 			)
@@ -2819,194 +3852,6 @@
 			(project ""
 				(path "/efde2cb3-16ef-4cc9-81c7-d9f2adf33283"
 					(reference "S1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Whackberry_Symbols_Library:RPi_Zero")
-		(at 114.3 43.18 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "a367fdaf-5363-4bb7-ab0a-6965ab69d29c")
-		(property "Reference" "U1"
-			(at 119.38 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "~"
-			(at 119.38 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Whackberry_Parts_Library:Modified_Raspberry_Pi_Zero_Socketed_THT_FaceDown_MountingHoles"
-			(at 122.936 95.25 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 114.3 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 114.3 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "P23"
-			(uuid "f94083b6-ff88-433f-91d0-dcf0f55161b1")
-		)
-		(pin "18"
-			(uuid "57e5085d-6aac-4011-ac49-f235bc02c6a2")
-		)
-		(pin "12"
-			(uuid "cf18cbf8-a171-47c9-bd82-0d1732f7d590")
-		)
-		(pin "16"
-			(uuid "2413307d-6ed2-449a-a90f-8f5bce54257c")
-		)
-		(pin "19"
-			(uuid "4894bf9f-c618-45f6-9429-5c1759d886c4")
-		)
-		(pin "20"
-			(uuid "fb6983d5-6607-4fa6-812b-3c5ce310f74b")
-		)
-		(pin "23"
-			(uuid "d48090d0-9c52-44f6-bd8f-80ce934c6633")
-		)
-		(pin "2"
-			(uuid "f04e8e23-d116-4a01-a223-f25a5694edf0")
-		)
-		(pin "24"
-			(uuid "6c03ef40-ecfb-4ca4-b5bf-6836e9bdb2bc")
-		)
-		(pin "28"
-			(uuid "966cca7d-f5cc-4740-af55-637a4899b336")
-		)
-		(pin "15"
-			(uuid "78826c11-c3d8-42f0-b341-a783ca29a1c3")
-		)
-		(pin "25"
-			(uuid "8f589310-1360-4065-ab00-9877e231a9fe")
-		)
-		(pin "9"
-			(uuid "61d93da5-6a84-4618-89af-583a9ac3a080")
-		)
-		(pin "14"
-			(uuid "4ea6eeb1-7dab-4326-8d49-4f84c8df2f8f")
-		)
-		(pin "21"
-			(uuid "0f2bb1c1-ed5d-41bb-b0b9-0b92af0a6d6f")
-		)
-		(pin "30"
-			(uuid "4e863bec-1864-420f-b693-e6c5045c8a0c")
-		)
-		(pin "22"
-			(uuid "c71bb895-e7af-4568-9f2c-1355549f1892")
-		)
-		(pin "17"
-			(uuid "f4ab2857-5234-485a-83da-6668cb0249e2")
-		)
-		(pin "31"
-			(uuid "8d41759e-fe9f-482c-a47f-73c3f5ba7173")
-		)
-		(pin "4"
-			(uuid "d516693c-ae49-4f3c-a914-01eac6caad2a")
-		)
-		(pin "27"
-			(uuid "d73e95c9-2a8e-4a0f-abab-09cfb1bbc5db")
-		)
-		(pin "32"
-			(uuid "784f076d-fe72-4225-954c-aeb0443a2d95")
-		)
-		(pin "1"
-			(uuid "d68ea8b7-4eed-457b-a191-4f83585e282f")
-		)
-		(pin "35"
-			(uuid "9f4d342e-b91c-4ac3-b32f-00870945ea02")
-		)
-		(pin "3"
-			(uuid "5f360b8d-4cfe-438c-947c-0287409461a3")
-		)
-		(pin "38"
-			(uuid "fc93d6a1-8955-47d2-b077-fcfc3f9e275b")
-		)
-		(pin "26"
-			(uuid "17f24f05-baef-484f-8889-b1f892ed8867")
-		)
-		(pin "40"
-			(uuid "0f4e682d-9a11-4696-aa17-2ab84dd16d75")
-		)
-		(pin "6"
-			(uuid "fd472729-fdf5-4d61-bd54-40683a262416")
-		)
-		(pin "P22"
-			(uuid "753660e8-a0f8-46b3-bbb5-f3db41c9ae10")
-		)
-		(pin "39"
-			(uuid "0b6e3a45-7fd1-4863-9ba6-8897abd59630")
-		)
-		(pin "7"
-			(uuid "5e3131ac-fe6e-43fc-bb8f-6e8a958f6550")
-		)
-		(pin "36"
-			(uuid "b20216e3-e19a-444c-9403-e62611e6c5b2")
-		)
-		(pin "10"
-			(uuid "f57a8f1b-472c-45e6-85eb-5bd61d58e3db")
-		)
-		(pin "37"
-			(uuid "e31a1ebe-5bc1-4f04-9d4e-3e89639d23c3")
-		)
-		(pin "29"
-			(uuid "38c913c6-2581-4af7-be71-b1fb47b3a9d0")
-		)
-		(pin "11"
-			(uuid "9f3d4d4d-4d8f-4455-85b6-33c8f46e8bb8")
-		)
-		(pin "8"
-			(uuid "5eb50a15-5fe3-47dc-82e6-9aac5594786c")
-		)
-		(pin "5"
-			(uuid "141b9353-f946-49a0-af9e-76b7a5d80e34")
-		)
-		(pin "34"
-			(uuid "f5e29c36-268a-41d4-9271-21e719b45f89")
-		)
-		(pin "13"
-			(uuid "3cdfbac7-35b6-4d27-a33f-2921670bf2a4")
-		)
-		(pin "33"
-			(uuid "cad9d6ff-def9-4f6e-b099-9dd25954cd8a")
-		)
-		(instances
-			(project ""
-				(path "/efde2cb3-16ef-4cc9-81c7-d9f2adf33283"
-					(reference "U1")
 					(unit 1)
 				)
 			)

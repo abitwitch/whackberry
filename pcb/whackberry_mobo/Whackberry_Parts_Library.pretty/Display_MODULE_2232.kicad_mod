@@ -438,7 +438,7 @@
 		(layer "F.Fab")
 		(uuid "a5535c33-cd77-41e4-a2e7-663863ab2f7f")
 	)
-	(pad "5v" thru_hole circle
+	(pad "5V" thru_hole circle
 		(at 58.674 0.7874)
 		(size 1.7 1.7)
 		(drill 1)

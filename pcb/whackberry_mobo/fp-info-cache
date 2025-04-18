@@ -1,4 +1,4 @@
-24421425622799031
+24426660883148561
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -98609,9 +98609,23 @@ Camera
 0
 0
 Whackberry_Parts_Library
+CardKB
+
+
+0
+0
+0
+Whackberry_Parts_Library
 Display_MODULE_2232
 
 
+0
+6
+6
+Whackberry_Parts_Library
+GroveFemaleHeader_114020164
+114020164-2
+Connector
 0
 6
 6
@@ -98629,3 +98643,10 @@ QT_Py
 0
 14
 14
+Whackberry_Parts_Library
+USBa_Port_875830010BHLF
+87583-0010BHLF-1
+Connector
+0
+6
+6

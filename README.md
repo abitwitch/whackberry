@@ -19,6 +19,10 @@ Disconnected Cyberdeck for password management
 - At least 1 micro CD card
 - A Raspberry Pi with internet (for setup only)
 
+### PCB Mounting accessories
+- SMD Grove Female Header [link](https://www.mouser.ca/ProductDetail/Seeed-Studio/114020164?qs=7MVldsJ5Uayw%2FOfizq4F8w%3D%3D)
+- USB Type-A Jack [link](https://www.mouser.ca/ProductDetail/Amphenol-FCI/87583-0010BHLF?qs=HGI6s9c03KdFNxR4%2F7F3Vg%3D%3D)
+
 ## SD card setup
 1. Download Official Raspberry Pi Imager
 2. Select Legacy, 32-bit - Debian Bullseye (released 2024-10-22)
@@ -99,13 +103,9 @@ On a PC connected to the Pico
 
 
 TODO
-- set up Pico for IR receiver and keybaord emulator
-- set up security chip
-  - Instructions [here](https://learn.adafruit.com/adafruit-atecc608-breakout/python-circuitpython)
-  - too hard, not worth it
-- set up memory card readers, not doing
-- redo everything with an account called pi (not test)
-  - continue at "Configure the OS"
+- PCB: add holes for cable mgnt
+- PCB: finalize and order
+- Commandline crypto wallet
 - Nice to have: ir-sender GUI using tkinter
 
 
