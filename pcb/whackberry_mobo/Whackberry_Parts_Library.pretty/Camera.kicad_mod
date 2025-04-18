@@ -1,0 +1,125 @@
+(footprint "Camera"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(property "Reference" "Camera"
+		(at 22.5 -3.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "c05a0832-fe0b-4dce-a5ec-d0abc63b9c25")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "Camera"
+		(at 22.8 -1.4 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "e304eb6c-c373-488b-86dd-d8e80a4b598d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "8bc1f4b0-1740-4dfd-ba54-7f9b1818f59a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "15f8a1b0-f440-43f9-b1a1-a07d31980fcf")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "b755bea5-cfb7-4bbb-aba9-f74d9d6f3b29")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_rect
+		(start 10 -10)
+		(end 35 14)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill none)
+		(layer "F.SilkS")
+		(uuid "7ae4248f-2b78-49ac-ab44-34c9770f69d1")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 22.6 1.9 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "e4e6bb23-6a54-4844-bc73-80ecf149c8f4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "" np_thru_hole circle
+		(at 12.4 -2.9 270)
+		(size 2.2 2.2)
+		(drill 2.2)
+		(layers "F&B.Cu" "*.Mask")
+		(solder_mask_margin 1.27)
+		(uuid "ed50eddb-b5e3-4fae-a71e-518de7cd15f1")
+	)
+	(pad "" np_thru_hole circle
+		(at 12.4 11.6 270)
+		(size 2.2 2.2)
+		(drill 2.2)
+		(layers "F&B.Cu" "*.Mask")
+		(solder_mask_margin 1.27)
+		(uuid "6cd57e4c-19c6-4523-a3df-12e406d5a45c")
+	)
+	(pad "" np_thru_hole circle
+		(at 32.6 -2.9 270)
+		(size 2.2 2.2)
+		(drill 2.2)
+		(layers "F&B.Cu" "*.Mask")
+		(solder_mask_margin 1.27)
+		(uuid "4487bb9f-bd2e-47be-9687-2f14c3f93783")
+	)
+	(pad "" np_thru_hole circle
+		(at 32.6 11.6 270)
+		(size 2.2 2.2)
+		(drill 2.2)
+		(layers "F&B.Cu" "*.Mask")
+		(solder_mask_margin 1.27)
+		(uuid "684897d9-3581-4435-968a-ecfa3f47bbf8")
+	)
+)

@@ -2,7 +2,6 @@
 Offline and disconnected cyberdeck for password managment. 
 
 
-
 # WhackberryPi
 Disconnected Cyberdeck for password management
 
