@@ -6,7 +6,7 @@
 	(descr "Raspberry Pi Zero using through hole straight pin socket, 2x20, 2.54mm pitch, https://www.raspberrypi.org/documentation/hardware/raspberrypi/mechanical/rpi_MECH_Zero_1p2.pdf")
 	(tags "raspberry pi zero through hole")
 	(property "Reference" "REF**"
-		(at -6.27 25.87 90)
+		(at 7 25 90)
 		(layer "F.SilkS")
 		(uuid "6a5ee907-3ef8-446b-91b3-26dccf8863ea")
 		(effects

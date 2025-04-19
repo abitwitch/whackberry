@@ -4363,7 +4363,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "25bfacd5-2fc4-4143-8f35-03d16ddac1b3")
-		(property "Reference" "J2"
+		(property "Reference" "USB-A-1"
 			(at 196.85 25.3999 90)
 			(effects
 				(font
@@ -4481,7 +4481,7 @@
 		(instances
 			(project ""
 				(path "/efde2cb3-16ef-4cc9-81c7-d9f2adf33283"
-					(reference "J2")
+					(reference "USB-A-1")
 					(unit 1)
 				)
 			)
@@ -4629,7 +4629,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5146df66-7df1-4238-9d74-c700aa0be2bf")
-		(property "Reference" "D1"
+		(property "Reference" "IR-LED-1"
 			(at 261.747 66.04 0)
 			(effects
 				(font
@@ -4681,7 +4681,7 @@
 		(instances
 			(project ""
 				(path "/efde2cb3-16ef-4cc9-81c7-d9f2adf33283"
-					(reference "D1")
+					(reference "IR-LED-1")
 					(unit 1)
 				)
 			)
@@ -4697,7 +4697,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5b7ab374-ea08-4db7-8f1e-28335fe94051")
-		(property "Reference" "U1"
+		(property "Reference" "RPi-Zero-1"
 			(at 160.02 38.1 0)
 			(effects
 				(font
@@ -4869,7 +4869,7 @@
 		(instances
 			(project ""
 				(path "/efde2cb3-16ef-4cc9-81c7-d9f2adf33283"
-					(reference "U1")
+					(reference "RPi-Zero-1")
 					(unit 1)
 				)
 			)
@@ -4885,7 +4885,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5fe68477-87a4-47be-a8ef-1f49cc562099")
-		(property "Reference" "U6"
+		(property "Reference" "CardKB-1"
 			(at 78.74 85.7249 0)
 			(effects
 				(font
@@ -4933,7 +4933,7 @@
 		(instances
 			(project ""
 				(path "/efde2cb3-16ef-4cc9-81c7-d9f2adf33283"
-					(reference "U6")
+					(reference "CardKB-1")
 					(unit 1)
 				)
 			)
@@ -4949,7 +4949,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "856ec7c8-a80c-4b34-a638-2982c40f854c")
-		(property "Reference" "U2"
+		(property "Reference" "IR-Re-1"
 			(at 269.24 51.2648 90)
 			(effects
 				(font
@@ -5006,7 +5006,7 @@
 		(instances
 			(project ""
 				(path "/efde2cb3-16ef-4cc9-81c7-d9f2adf33283"
-					(reference "U2")
+					(reference "IR-Re-1")
 					(unit 1)
 				)
 			)
@@ -5022,7 +5022,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "89aa41ab-7977-49b5-a4fe-580b0e8c0a4a")
-		(property "Reference" "U3"
+		(property "Reference" "QTpy-1"
 			(at 236.22 16.51 0)
 			(effects
 				(font
@@ -5110,7 +5110,7 @@
 		(instances
 			(project ""
 				(path "/efde2cb3-16ef-4cc9-81c7-d9f2adf33283"
-					(reference "U3")
+					(reference "QTpy-1")
 					(unit 1)
 				)
 			)
@@ -5126,7 +5126,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8bf3af67-567f-4f51-8869-b2e015857a58")
-		(property "Reference" "J1"
+		(property "Reference" "GROVE-1"
 			(at 101.6 74.93 0)
 			(effects
 				(font
@@ -5242,7 +5242,7 @@
 		(instances
 			(project ""
 				(path "/efde2cb3-16ef-4cc9-81c7-d9f2adf33283"
-					(reference "J1")
+					(reference "GROVE-1")
 					(unit 1)
 				)
 			)
@@ -5258,7 +5258,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8d646dec-3524-4ebc-a7ab-ce195f72e5a6")
-		(property "Reference" "U7"
+		(property "Reference" "USB-C-1"
 			(at 172.72 23.4949 0)
 			(effects
 				(font
@@ -5330,7 +5330,7 @@
 		(instances
 			(project ""
 				(path "/efde2cb3-16ef-4cc9-81c7-d9f2adf33283"
-					(reference "U7")
+					(reference "USB-C-1")
 					(unit 1)
 				)
 			)
@@ -5346,7 +5346,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a310891e-6769-4ba6-a78d-f4011d365635")
-		(property "Reference" "S1"
+		(property "Reference" "5WayNav-1"
 			(at 115.57 114.2999 90)
 			(effects
 				(font
@@ -5464,7 +5464,7 @@
 		(instances
 			(project ""
 				(path "/efde2cb3-16ef-4cc9-81c7-d9f2adf33283"
-					(reference "S1")
+					(reference "5WayNav-1")
 					(unit 1)
 				)
 			)
@@ -5480,7 +5480,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a99cdb0e-fe37-4532-aab5-e113d2bdaeb1")
-		(property "Reference" "U5"
+		(property "Reference" "LCD-1"
 			(at 119.38 27.9399 0)
 			(effects
 				(font
@@ -5565,7 +5565,7 @@
 		(instances
 			(project ""
 				(path "/efde2cb3-16ef-4cc9-81c7-d9f2adf33283"
-					(reference "U5")
+					(reference "LCD-1")
 					(unit 1)
 				)
 			)

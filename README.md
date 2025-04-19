@@ -18,6 +18,7 @@ Disconnected Cyberdeck for password management
 - Raspberry Pi Pico (RP2040 - no wifi) [link](https://www.adafruit.com/product/5525)
 - At least 1 micro CD card
 - A Raspberry Pi with internet (for setup only)
+- A USB A micro SD Card reader (Optional) [link](https://shop.sandisk.com/en-ca/products/accessories/memory-card-readers/sandisk-quickflow-microsd-usb-a-memory-card-reader?sku=SDDR-B731-GN6NN)
 
 ### PCB Mounting accessories
 - SMD Grove Female Header [link](https://www.mouser.ca/ProductDetail/Seeed-Studio/114020164?qs=7MVldsJ5Uayw%2FOfizq4F8w%3D%3D)
