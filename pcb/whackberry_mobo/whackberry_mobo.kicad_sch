@@ -4489,7 +4489,7 @@
 	)
 	(symbol
 		(lib_id "Whackberry_Symbols_Library:Camera")
-		(at 151.13 176.53 0)
+		(at 177.8 138.43 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4498,7 +4498,7 @@
 		(fields_autoplaced yes)
 		(uuid "2f63a1f6-5cfc-452f-ae46-51218e8d926c")
 		(property "Reference" "U4"
-			(at 157.48 175.8949 0)
+			(at 184.15 137.7949 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4507,7 +4507,7 @@
 			)
 		)
 		(property "Value" "~"
-			(at 157.48 177.8 0)
+			(at 184.15 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4516,7 +4516,7 @@
 			)
 		)
 		(property "Footprint" "Whackberry_Parts_Library:Camera"
-			(at 151.13 176.53 0)
+			(at 177.8 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4525,7 +4525,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 151.13 176.53 0)
+			(at 177.8 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4534,7 +4534,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 151.13 176.53 0)
+			(at 177.8 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)

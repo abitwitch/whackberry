@@ -104,10 +104,10 @@ On a PC connected to the Pico
 
 
 TODO
-- PCB: add holes for cable mgnt
-- PCB: finalize and order
+- PCB: order
 - Commandline crypto wallet
 - Nice to have: ir-sender GUI using tkinter
+- Clean up this README
 
 
 
