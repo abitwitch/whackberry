@@ -43,6 +43,8 @@ end_val=1
 inst_val=2
 minData_val=3
 pulse_increment=(pulse_max-pulse_min)/(n+3)
+timeout=10 #how many seconds (or part of) with nothing recieved before timeout
+lastrecieved=-1
 
 checksum=checksum_ver=0
 byte_part=byte=0
@@ -77,9 +79,20 @@ while True:
   if packet_status=="receiving":
     pixel.fill((255, 165, 0)) #Orange
   else:
-    pixel.fill((0, 0, 0))    
+    pixel.fill((0, 0, 0))
+  #check for timeout
+  if stream_status!="ready" and time.time()-lastrecieved > timeout:
+    print("Error: signal timeout.")
+    flashcolours([(0, 0, 0),(255, 0, 0)],0.4,2) #Off and Red
+    packet_status="ready"
+    stream_status="ready"
+    checksum=checksum_ver=0
+    byte_part=byte=0
+    bytedata = bytearray()
+    lastrecieved = -1
   #read pulse
   while len(pulses)>0:
+    lastrecieved=time.time()
     pulse=pulses.popleft()
     pulse_val=(pulse-pulse_min)/pulse_increment
     pulse_val=round(pulse_val)
@@ -112,6 +125,7 @@ while True:
             except:
               print("Error: decrypt failed. Check public and private keys.")
               flashcolours([(0,0,255),(255, 0, 0)],0.4,2) #Blue and Red
+              decrypt_failed=True
           if not decrypt_failed:
             try:
               text=bytearray_to_text(bytedata)
@@ -121,7 +135,6 @@ while True:
             except:
               print("Error: unable to decode or send keys. Check input text.")
               flashcolours([(255, 0,165),(255, 0, 0)],0.4,2) #Pink and Red
-            
         else:
           flashcolours([(255, 165, 0),(255, 0, 0)],0.4,2) #Orange and Red
           print("Error: bad checksum, exiting data stream.")        
@@ -130,6 +143,7 @@ while True:
         checksum=checksum_ver=0
         byte_part=byte=0
         bytedata = bytearray()
+        lastrecieved = -1
       else:
         #prepare for new packet
         stream_status="ready"
@@ -142,9 +156,11 @@ while True:
       if byte_part==pulses_per_byte:
         if stream_status=="checksum":
           checksum_ver=byte
-        if stream_status=="datastream":
+        if stream_status=="datastream" and byte in range(0,256):
           bytedata.append(byte)
           checksum=(checksum+byte)%256
         byte_part=byte=0
     else:
       pass #this is where any unexpected values or padding values used to buffer packets will end up. They can be ignored.
+
+
