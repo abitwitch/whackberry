@@ -13,6 +13,12 @@ keyboard_height=4;
 keyboard_width=7;
 keyboard_offset=[outer_width-keyboard_width-0.5,0,0.5];
 keyboard_rounding=0.5;
+keyboard_bump_rounding=0.1;
+keyboard_bump_height=1;
+keyboard_bump_width=0.5+outer_rounding+keyboard_bump_rounding;
+keyboard_bump_depth=outer_depth;
+keyboard_bump_offset=[outer_width-outer_rounding-keyboard_bump_rounding,0,3];
+keyboard_bump_hollow_offset=[keyboard_bump_offset[0]+global_thickness,keyboard_bump_offset[1]-global_nudge,keyboard_bump_offset[2]+global_thickness];
 mouse_nav_height=1;
 mouse_nav_width=1;
 mouse_nav_offset=[1.5,0,3];
@@ -30,14 +36,36 @@ display_width=10;
 display_offset=[0.5,0,6];
 display_rounding=0.5;
 
+display_bump_rounding=0.1;
+display_bump_height=1.5;
+display_bump_width=0.5+outer_rounding+display_bump_rounding;
+display_bump_depth=outer_depth;
+display_bump_offset=[-display_bump_width+outer_rounding+display_bump_rounding,0,10];
+display_bump_hollow_offset=[display_bump_offset[0]+global_thickness,display_bump_offset[1]-global_nudge,display_bump_offset[2]+global_thickness];
+
 
 
 //outer shape
 difference () {
+    union () {
     //main shell
     roundedcube([outer_width, outer_depth, outer_height], false, outer_rounding, "ymax");
-    translate([global_thickness/2,-global_nudge,global_thickness/2]) 
-    roundedcube([outer_width-global_thickness, outer_depth-global_thickness, outer_height-global_thickness], false, outer_rounding, "ymax");
+    //keyboard_bump
+    translate(keyboard_bump_offset)
+    roundedcube([keyboard_bump_width, outer_depth, keyboard_bump_height], false, keyboard_bump_rounding, "ymax");
+    //display bump
+    translate(display_bump_offset)
+    roundedcube([display_bump_width, outer_depth, display_bump_height], false, display_bump_rounding, "ymax");
+    }
+    //main shell hollow
+    translate([global_thickness,-global_nudge,global_thickness]) 
+    roundedcube([outer_width-(global_thickness*2), outer_depth-global_thickness, outer_height-(global_thickness*2)], false, outer_rounding, "ymax");
+    //keyboard bump hollow
+    translate(keyboard_bump_hollow_offset)
+    roundedcube([keyboard_bump_width-(global_thickness*2), outer_depth-(2*global_thickness), keyboard_bump_height-(2*global_thickness)], false, keyboard_bump_rounding, "ymax");
+    //display bump hollow
+    translate(display_bump_hollow_offset)
+    roundedcube([display_bump_width-(global_thickness*2), outer_depth-(2*global_thickness), display_bump_height-(2*global_thickness)], false, display_bump_rounding, "ymax");
     //Keyboard hole
     translate(keyboard_offset) 
     roundedcube([keyboard_width, outer_depth*2, keyboard_height], false, keyboard_rounding, "ymax");
