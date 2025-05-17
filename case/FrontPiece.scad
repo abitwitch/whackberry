@@ -1,5 +1,6 @@
 include <./modules/roundedcube.scad>
 include <./modules/slider.scad>
+include <./modules/screwhole.scad>
 //Note objects are anchored to the bottom right corner
 
 //Vars
@@ -47,10 +48,32 @@ usbc_bump_width=0.25+outer_rounding+usbc_bump_rounding;
 usbc_bump_depth=outer_depth;
 usbc_bump_offset=[outer_width-outer_rounding-usbc_bump_rounding,0,7.5];
 usbc_bump_hollow_offset=[usbc_bump_offset[0]+(global_thickness*0),usbc_bump_offset[1]-global_nudge,usbc_bump_offset[2]+global_thickness]; //(global_thickness*0) to make is 2x thickness
+slider_panel_width=2;
+slider_panel_depth=0.4;
+slider_panel_height=2;
+slider_track_width=0.5;
+slider_offset=[outer_width,-(slider_panel_width+(2*slider_track_width))/2,usbc_bump_offset[2]+global_thickness];
+screwhole_support_height=outer_depth;
+screwhole_height=screwhole_support_height-(global_thickness*4);
+screwhole_radius=0.22/2;
+screwhole_support_radius=screwhole_radius+global_thickness;
+screwhole_nudge=global_nudge;
+screwhole_offsets=[
+  [1,1,1],
+  [2,2,2]
+];
 
+for (i = [ 0 : len(screwhole_offsets) ]) {
+  translate(screwhole_offsets[i])
+  screwhole(screwhole_support_height, screwhole_height, screwhole_support_radius, screwhole_radius, screwhole_nudge);
+}
 
+//slider
+translate(slider_offset)
+rotate(90,[0,0,1])
+slider(slider_panel_width,slider_panel_depth,slider_panel_height,slider_track_width);
 
-//outer shape
+//front piece shape
 difference () {
     union () {
     //main shell
@@ -92,6 +115,7 @@ difference () {
     //Display hole
     translate(display_offset) 
     roundedcube([display_width, outer_depth*2, display_height], false, display_rounding, "ymax");
+    //TODO add slider and hole so usb-c ports aren't blocked
 }
 
     

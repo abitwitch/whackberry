@@ -55,6 +55,7 @@ I suggest doing the configuartion from another pi with internet. Plug the SD car
 - In teminal: `sudo apt update && sudo apt full-upgrade` (tried to see if would fix chromium on zero)
 - Install circuit python: `sudo pip3 install --break-system-packages adafruit-blinka`
 - Install PyUserInput for mouse: `sudo pip3 install PyUserInput pynput`
+- Install web3 for ethereum wallet generation: `sudo pip3 install web3`
 
 ### CarKB setup
 - Follow instructions [here](https://github.com/ian-antking/cardkb)
@@ -104,8 +105,9 @@ On a PC connected to the Pico
 
 
 TODO
-- PCB: order
-- Commandline crypto wallet
+- 3d case
+- setup HID to act as a security key
+- Commandline crypto wallet (bip39? electrum? bitcoin-core?)
 - Nice to have: ir-sender GUI using tkinter
 - Clean up this README
 

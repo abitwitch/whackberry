@@ -1,6 +1,6 @@
 
 module slider(panel_width, panel_depth, panel_height, track_width){
-    tab_hieght=panel_depth;
+    tab_hieght=panel_depth/2;
     module prism(l, w, h){
       polyhedron(//pt 0        1        2        3        4        5
               points=[[0,0,0], [l,0,0], [l,w,0], [0,w,0], [0,w,h], [l,w,h]],
@@ -25,9 +25,9 @@ module slider(panel_width, panel_depth, panel_height, track_width){
     //tab
     difference () {
         translate([panel_width/2,0,panel_height/2])
-        cylinder(h = tab_hieght, r1 = panel_width/2, r2 = panel_width/2, center = true, $fn=256);
+        cylinder(h = tab_hieght, r1 = panel_width/2, r2 = panel_width/2, center = true, $fn=8);
         translate([0,panel_depth,0])
-        cube([panel_width, panel_depth, panel_height], false);
+        cube([panel_width, panel_width, panel_height], false);
     }
     }
 }
