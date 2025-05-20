@@ -16,6 +16,7 @@ outer_lower_height=5;
 outer_lower_width=outer_upper_width;
 outer_lower_depth=1;
 outer_lower_rounding=outer_upper_rounding;
+outer_rear_depth=2;
 keyboard_height=4;
 keyboard_width=7;
 keyboard_offset=[outer_lower_width-keyboard_width-0.5,0,0.5];
@@ -59,6 +60,8 @@ slider_panel_depth=0.4;
 slider_panel_height=2;
 slider_track_width=0.5;
 slider_offset=[outer_upper_width,-(slider_panel_width+(2*slider_track_width))/2,usbc_bump_offset[2]+global_thickness];
+slider_hollow_growth_factor=1.10;
+slider_hollow_y_offset=-(((slider_panel_width*slider_hollow_growth_factor)+(2*slider_track_width*slider_hollow_growth_factor))-(slider_panel_width+(2*slider_track_width)))/2;
 screwhole_radius=0.22/2;
 screwhole_support_radius=screwhole_radius+global_thickness;
 screwhole_nudge=global_nudge;
@@ -78,14 +81,22 @@ holepeg_offsets=[ //lateral offsets are to center of screwholes
   [4.2,0,5.5],
   [7.5,0,5.5],
 ];
+holepeg_rear_offsets=[ //lateral offsets are to center of screwholes
+  [7,0,12.5],
+  [1,0,5.5],
+];
+screwhole_counterbore_radius=0.3;
+screwhole_counterbore_radius_primary=0.25;
+
 
 //slider
 translate(slider_offset)
+//translate([0,0,$t*slider_panel_height])
 rotate(90,[0,0,1])
 slider(slider_panel_width,slider_panel_depth,slider_panel_height,slider_track_width);
 
+
 //front piece
-translate([50,0,0]) //comment out line
 color("yellow")
 difference () {
     union () {
@@ -127,7 +138,7 @@ difference () {
     roundedcube([display_bump_width-(global_thickness)+global_nudge, outer_upper_depth-(global_thickness), display_bump_height-(2*global_thickness)], false, display_bump_rounding, "ymax");
     //usbc bump hollow
     translate(usbc_bump_hollow_offset)
-    roundedcube([usbc_bump_width-(global_thickness), outer_upper_depth-(global_thickness), usbc_bump_height-(2*global_thickness)], false, usbc_bump_rounding, "ymax");
+    roundedcube([usbc_bump_width-(global_thickness), slider_panel_width/2, usbc_bump_height-(2*global_thickness)], false, usbc_bump_rounding, "ymax");
     //Keyboard hole
     translate(keyboard_offset) 
     roundedcube([keyboard_width, outer_lower_depth*2, keyboard_height], false, keyboard_rounding, "y");
@@ -143,7 +154,11 @@ difference () {
     //Display hole
     translate(display_offset) 
     cube([display_width, outer_upper_depth*2, display_height], false);
-    //TODO add slider
+    //slider - hollow (for track)
+    translate([0,slider_hollow_y_offset,0])
+    translate(slider_offset)
+    rotate(90,[0,0,1])
+    slider(slider_panel_width*slider_hollow_growth_factor,slider_panel_depth*slider_hollow_growth_factor,usbc_bump_height-(global_thickness*2),slider_track_width*slider_hollow_growth_factor);
 }
 
 //front screwholes
@@ -176,18 +191,47 @@ for (i = [ 0 : len(holepeg_offsets)-1 ]) {
     holepeg(holepeg_support_height, holepeg_peg_height, holepeg_support_radius, holepeg_peg_radius);
   }
 }
-
-
-
-
-
-
-outer_rear_depth=2;
-
+//back screwholes (counterbore) - without holes
+color("blue")
+difference () {
+  for (i = [ 0 : len(screwhole_offsets)-1 ]) {
+    rotate([0,0,180])
+    translate(screwhole_offsets[i])
+    translate([-(2*screwhole_offsets[i][0]),0,0])
+    rotate([-90,0,0])
+    cylinder(h=outer_rear_depth, r1=screwhole_counterbore_radius+global_thickness, r2=screwhole_counterbore_radius+global_thickness, center=false, $fn=256);
+  }
+  //back screwholes (counterbore) - holes - major (where screw head can fit through)
+  for (i = [ 0 : len(screwhole_offsets)-1 ]) {
+    rotate([0,0,180])
+    translate(screwhole_offsets[i])
+    translate([-(2*screwhole_offsets[i][0]),global_thickness,0])
+    rotate([-90,0,0])
+    cylinder(h=outer_rear_depth+global_nudge, r1=screwhole_counterbore_radius, r2=screwhole_counterbore_radius, center=false, $fn=256);
+  }
+  //back screwholes (counterbore) - holes - primary (where screw head cannot fit through)
+  for (i = [ 0 : len(screwhole_offsets)-1 ]) {
+    rotate([0,0,180])
+    translate(screwhole_offsets[i])
+    translate([-(2*screwhole_offsets[i][0]),-global_nudge,0])
+    rotate([-90,0,0])
+    cylinder(h=outer_rear_depth+global_nudge, r1=screwhole_counterbore_radius_primary, r2=screwhole_counterbore_radius_primary, center=false, $fn=256);
+  }
+}
+//back holepegs
+color("purple")
+for (i = [ 0 : len(holepeg_rear_offsets)-1 ]) {
+  holepeg_rear_offsets_mod=[holepeg_rear_offsets[i][0],holepeg_rear_offsets[i][1],holepeg_rear_offsets[i][2]];
+  holepeg_support_height=outer_upper_depth;
+  rotate([0,0,180])
+  translate(holepeg_rear_offsets[i])
+  translate([-(2*holepeg_rear_offsets[i][0]),-holepeg_peg_height,0])
+  holepeg(holepeg_support_height, holepeg_peg_height, holepeg_support_radius, holepeg_peg_radius);
+}
 //back piece
-color("green")
-rotate([0,0,180])
-translate([-outer_upper_width,0,0])
+#color("green")
+rotate([0,180,180])
+mirror([0,0,1])
 difference () {
     union () {
       //main shell
@@ -218,8 +262,23 @@ difference () {
     roundedcube([display_bump_width-(global_thickness)+global_nudge, outer_upper_depth-(global_thickness), display_bump_height-(2*global_thickness)], false, display_bump_rounding, "ymax");
     //usbc bump hollow
     translate(usbc_bump_hollow_offset)
-    roundedcube([usbc_bump_width-(global_thickness), outer_upper_depth-(global_thickness), usbc_bump_height-(2*global_thickness)], false, usbc_bump_rounding, "ymax");
-    //TODO move the bumps on the back
-    //TODO add slider 
+    roundedcube([usbc_bump_width-(global_thickness), slider_panel_width/2, usbc_bump_height-(2*global_thickness)], false, usbc_bump_rounding, "ymax");
+    //back screwholes (counterbore) - holes - major (where screw head can fit through)
+    rotate([0,180,180])
+    mirror([0,0,1])
+    for (i = [ 0 : len(screwhole_offsets)-1 ]) {
+      rotate([0,0,180])
+      translate(screwhole_offsets[i])
+      translate([-(2*screwhole_offsets[i][0]),global_thickness,0])
+      rotate([-90,0,0])
+      cylinder(h=outer_rear_depth+global_nudge, r1=screwhole_counterbore_radius, r2=screwhole_counterbore_radius, center=false, $fn=256);
+    }
+    //slider - hollow (for track)
+    translate([0,slider_hollow_y_offset,0])
+    translate(slider_offset)
+    rotate(90,[0,0,1])
+    slider(slider_panel_width*slider_hollow_growth_factor,slider_panel_depth*slider_hollow_growth_factor,usbc_bump_height-(global_thickness*2),slider_track_width*slider_hollow_growth_factor);
 }
-
+//TODO: add microSD slot
+//TODO: add long support structs by the keyboard
+//TODO: add removable viewing panel on the back for airgap
