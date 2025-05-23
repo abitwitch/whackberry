@@ -27,6 +27,16 @@ keyboard_bump_width=0.5+outer_lower_rounding+keyboard_bump_rounding;
 keyboard_bump_depth=outer_lower_depth;
 keyboard_bump_offset=[outer_lower_width-outer_lower_rounding-keyboard_bump_rounding,0,3];
 keyboard_bump_hollow_offset=[keyboard_bump_offset[0]+global_thickness,keyboard_bump_offset[1]-global_nudge,keyboard_bump_offset[2]+global_thickness];
+keyboard_support_front_width=0.1;
+keyboard_support_front_depth=outer_lower_depth+outer_rear_depth-global_thickness;
+keyboard_support_front_height=1;
+keyboard_support_front_rounding=0.05;
+keyboard_support_front_offset=[3,outer_lower_depth-keyboard_support_front_depth,1];
+keyboard_support_rear_width=keyboard_support_front_width;
+keyboard_support_rear_depth=keyboard_support_front_depth;
+keyboard_support_rear_height=keyboard_support_front_height;
+keyboard_support_rear_rounding=keyboard_support_front_rounding;
+keyboard_support_rear_offset=[3,outer_lower_depth-keyboard_support_front_depth-global_thickness,3.5];
 mouse_nav_height=1;
 mouse_nav_width=1;
 mouse_nav_offset=[1.5,0,3];
@@ -160,6 +170,9 @@ difference () {
     rotate(90,[0,0,1])
     slider(slider_panel_width*slider_hollow_growth_factor,slider_panel_depth*slider_hollow_growth_factor,usbc_bump_height-(global_thickness*2),slider_track_width*slider_hollow_growth_factor);
 }
+//Keyboard support (attached to front)
+translate(keyboard_support_front_offset)
+roundedcube([keyboard_support_front_width, keyboard_support_front_depth, keyboard_support_front_height], false, keyboard_support_front_rounding, "y");
 
 //front screwholes
 color("red")
@@ -279,6 +292,11 @@ difference () {
     rotate(90,[0,0,1])
     slider(slider_panel_width*slider_hollow_growth_factor,slider_panel_depth*slider_hollow_growth_factor,usbc_bump_height-(global_thickness*2),slider_track_width*slider_hollow_growth_factor);
 }
+//Keyboard support (attached to front)
+translate(keyboard_support_rear_offset)
+roundedcube([keyboard_support_rear_width, keyboard_support_rear_depth, keyboard_support_rear_height], false, keyboard_support_rear_rounding, "y");
 //TODO: add microSD slot
-//TODO: add long support structs by the keyboard
 //TODO: add removable viewing panel on the back for airgap
+//TODO: add clip to hold screwdriver
+//TODO: add hooks to wrap usb cable
+//TODO: add pinhole for QTPY reset button
