@@ -97,6 +97,8 @@ holepeg_rear_offsets=[ //lateral offsets are to center of screwholes
 ];
 screwhole_counterbore_radius=0.3;
 screwhole_counterbore_radius_primary=0.25;
+pqty_reset_button_hole_radius=0.15;
+pqty_reset_button_hole_offset=[8.5,0,11];
 
 
 //slider
@@ -291,6 +293,11 @@ difference () {
     translate(slider_offset)
     rotate(90,[0,0,1])
     slider(slider_panel_width*slider_hollow_growth_factor,slider_panel_depth*slider_hollow_growth_factor,usbc_bump_height-(global_thickness*2),slider_track_width*slider_hollow_growth_factor);
+    //QTpy reset button hole
+    translate(pqty_reset_button_hole_offset)
+    rotate(90,[-1,0,0])
+    cylinder(h=outer_rear_depth+global_thickness, r1=pqty_reset_button_hole_radius, r2=pqty_reset_button_hole_radius, center=false, $fn=256);
+
 }
 //Keyboard support (attached to front)
 translate(keyboard_support_rear_offset)
@@ -299,4 +306,4 @@ roundedcube([keyboard_support_rear_width, keyboard_support_rear_depth, keyboard_
 //TODO: add removable viewing panel on the back for airgap
 //TODO: add clip to hold screwdriver
 //TODO: add hooks to wrap usb cable
-//TODO: add pinhole for QTPY reset button
+//TODO: add if statement to roundedcube that onlt renders if valid (rounding value is less than or equal to half min value being rounded)
