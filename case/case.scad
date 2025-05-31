@@ -81,7 +81,7 @@ screwhole_offsets=[ //lateral offsets are to center of screwholes
   [9.5,0,12.5],
   [9.5,0,5.5],
 ];
-//holepeg_support_height=outer_upper_depth; //TODO make dependant on location
+//holepeg_support_height=outer_upper_depth;
 holepeg_peg_height=global_pcb_thickness;
 holepeg_peg_radius=0.1;
 holepeg_support_radius=0.2;
@@ -99,14 +99,22 @@ screwhole_counterbore_radius=0.3;
 screwhole_counterbore_radius_primary=0.25;
 pqty_reset_button_hole_radius=0.15;
 pqty_reset_button_hole_offset=[8.5,0,11];
-
+sd_slot_offset=[5,0.5,outer_upper_height+outer_lower_height-global_thickness-global_nudge];
+sd_slot_width=2;
+sd_slot_depth=1;
+cable_hook_strut_length=1.3;
+cable_hook_saddle_length=1.5;
+cable_hook_rounding=0.2;
+lower_cable_hook_offset=[0,-2,0];
+upper_cable_hook_offset=[-outer_rear_depth,11.7,0];
+screwdriver_slot_radius=0.6;
+screwdriver_slot_offset=[0,outer_rear_depth-screwdriver_slot_radius-global_thickness-global_nudge,3];
 
 //slider
 translate(slider_offset)
 //translate([0,0,$t*slider_panel_height])
 rotate(90,[0,0,1])
 slider(slider_panel_width,slider_panel_depth,slider_panel_height,slider_track_width);
-
 
 //front piece
 color("yellow")
@@ -212,35 +220,35 @@ difference () {
   for (i = [ 0 : len(screwhole_offsets)-1 ]) {
     rotate([0,0,180])
     translate(screwhole_offsets[i])
-    translate([-(2*screwhole_offsets[i][0]),0,0])
+    translate([-(2*screwhole_offsets[i][0]),global_pcb_thickness,0])
     rotate([-90,0,0])
-    cylinder(h=outer_rear_depth, r1=screwhole_counterbore_radius+global_thickness, r2=screwhole_counterbore_radius+global_thickness, center=false, $fn=256);
+    cylinder(h=outer_rear_depth-global_pcb_thickness, r1=screwhole_counterbore_radius+global_thickness, r2=screwhole_counterbore_radius+global_thickness, center=false, $fn=256);
   }
   //back screwholes (counterbore) - holes - major (where screw head can fit through)
   for (i = [ 0 : len(screwhole_offsets)-1 ]) {
     rotate([0,0,180])
     translate(screwhole_offsets[i])
-    translate([-(2*screwhole_offsets[i][0]),global_thickness,0])
+    translate([-(2*screwhole_offsets[i][0]),global_thickness+global_pcb_thickness,0])
     rotate([-90,0,0])
-    cylinder(h=outer_rear_depth+global_nudge, r1=screwhole_counterbore_radius, r2=screwhole_counterbore_radius, center=false, $fn=256);
+    cylinder(h=outer_rear_depth-global_pcb_thickness+global_nudge, r1=screwhole_counterbore_radius, r2=screwhole_counterbore_radius, center=false, $fn=256);
   }
   //back screwholes (counterbore) - holes - primary (where screw head cannot fit through)
   for (i = [ 0 : len(screwhole_offsets)-1 ]) {
     rotate([0,0,180])
     translate(screwhole_offsets[i])
-    translate([-(2*screwhole_offsets[i][0]),-global_nudge,0])
+    translate([-(2*screwhole_offsets[i][0]),-global_nudge+global_pcb_thickness,0])
     rotate([-90,0,0])
-    cylinder(h=outer_rear_depth+global_nudge, r1=screwhole_counterbore_radius_primary, r2=screwhole_counterbore_radius_primary, center=false, $fn=256);
+    cylinder(h=outer_rear_depth-global_pcb_thickness+global_nudge, r1=screwhole_counterbore_radius_primary, r2=screwhole_counterbore_radius_primary, center=false, $fn=256);
   }
 }
 //back holepegs
 color("purple")
 for (i = [ 0 : len(holepeg_rear_offsets)-1 ]) {
   holepeg_rear_offsets_mod=[holepeg_rear_offsets[i][0],holepeg_rear_offsets[i][1],holepeg_rear_offsets[i][2]];
-  holepeg_support_height=outer_upper_depth;
+  holepeg_support_height=outer_upper_depth-global_pcb_thickness;
   rotate([0,0,180])
   translate(holepeg_rear_offsets[i])
-  translate([-(2*holepeg_rear_offsets[i][0]),-holepeg_peg_height,0])
+  translate([-(2*holepeg_rear_offsets[i][0]),-holepeg_peg_height+global_pcb_thickness,0])
   holepeg(holepeg_support_height, holepeg_peg_height, holepeg_support_radius, holepeg_peg_radius);
 }
 //back piece
@@ -260,6 +268,22 @@ difference () {
       //usbc bump
       translate(usbc_bump_offset)
       roundedcube([usbc_bump_width, outer_upper_depth, usbc_bump_height], false, usbc_bump_rounding, "ymax");
+      //lower cable hook
+      rotate([270,0,90])
+      translate(lower_cable_hook_offset)
+      union(){
+        roundedcube([outer_rear_depth, global_thickness, cable_hook_strut_length], false, cable_hook_rounding, "zmax");
+        translate([0,0,cable_hook_strut_length-(2*global_thickness)])
+        roundedcube([outer_rear_depth, cable_hook_saddle_length, global_thickness], false, cable_hook_rounding, "all");
+      }
+      //lower cable hook
+      rotate([270,180,90])
+      translate(upper_cable_hook_offset)
+      union(){
+        roundedcube([outer_rear_depth, global_thickness, cable_hook_strut_length], false, cable_hook_rounding, "zmax");
+        translate([0,0,cable_hook_strut_length-(2*global_thickness)])
+        roundedcube([outer_rear_depth, cable_hook_saddle_length, global_thickness], false, cable_hook_rounding, "all");
+      }
     }
     //main shell shelf hollow
     translate([global_thickness,-global_nudge,global_thickness]) 
@@ -297,13 +321,21 @@ difference () {
     translate(pqty_reset_button_hole_offset)
     rotate(90,[-1,0,0])
     cylinder(h=outer_rear_depth+global_thickness, r1=pqty_reset_button_hole_radius, r2=pqty_reset_button_hole_radius, center=false, $fn=256);
-
+    //sd slot hole
+    translate(sd_slot_offset)
+    cube([sd_slot_width, sd_slot_depth, global_thickness+(2*global_nudge)], false);
 }
 //Keyboard support (attached to front)
 translate(keyboard_support_rear_offset)
 roundedcube([keyboard_support_rear_width, keyboard_support_rear_depth, keyboard_support_rear_height], false, keyboard_support_rear_rounding, "y");
-//TODO: add microSD slot
-//TODO: add removable viewing panel on the back for airgap
-//TODO: add clip to hold screwdriver
-//TODO: add hooks to wrap usb cable
-//TODO: add if statement to roundedcube that onlt renders if valid (rounding value is less than or equal to half min value being rounded)
+//screwdriver slot
+color("cyan")
+rotate([0,180,180])
+mirror([0,0,1])
+translate(screwdriver_slot_offset)
+rotate([0,90,0])
+difference () {
+  cylinder(h=outer_upper_width-global_thickness, r1=screwdriver_slot_radius+global_thickness, r2=screwdriver_slot_radius+global_thickness, center=false, $fn=256);
+  translate ([0,0,-global_nudge])
+  cylinder(h=outer_upper_width-global_thickness, r1=screwdriver_slot_radius, r2=screwdriver_slot_radius, center=false, $fn=256);
+}
