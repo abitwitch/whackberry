@@ -4,111 +4,114 @@ include <./modules/screwhole.scad>
 include <./modules/holepeg.scad>
 //Note objects are anchored to the bottom right corner
 
-//Vars
-global_thickness=0.2;
+//Vars (UNITS = mm)
+global_thickness=4;
+global_gap=3.5;
 global_nudge=0.01; //used as a tiny push to prevent two shapes from overlapping in digital rendering
-global_pcb_thickness=0.2;
-outer_upper_height=8;
-outer_upper_width=11;
-outer_upper_depth=2;
-outer_upper_rounding=0.25;
-outer_lower_height=5;
+global_pcb_thickness=1.4;
+outer_upper_height=92+global_thickness+global_gap;
+outer_upper_width=121+(2*global_thickness)+(2*global_gap);
+outer_upper_depth=12+global_thickness+global_gap;
+outer_upper_rounding=1;
+outer_lower_height=56+global_thickness+global_gap;
 outer_lower_width=outer_upper_width;
-outer_lower_depth=1;
+outer_lower_depth=8+(2*global_thickness)+(2*global_gap);;
 outer_lower_rounding=outer_upper_rounding;
-outer_rear_depth=2;
-keyboard_height=4;
-keyboard_width=7;
-keyboard_offset=[outer_lower_width-keyboard_width-0.5,0,0.5];
+outer_rear_depth=16+global_thickness+global_gap;
+keyboard_height=52.5;
+keyboard_width=84;
+keyboard_offset=[outer_lower_width-keyboard_width-global_thickness-global_gap,0,global_thickness+global_gap];
 keyboard_rounding=0.5;
-keyboard_bump_rounding=0.1;
-keyboard_bump_height=1;
-keyboard_bump_width=0.5+outer_lower_rounding+keyboard_bump_rounding;
+keyboard_bump_rounding=1;
+keyboard_bump_height=10+global_thickness+global_gap;
+keyboard_bump_width=5+global_thickness+global_gap+outer_lower_rounding+keyboard_bump_rounding;
 keyboard_bump_depth=outer_lower_depth;
-keyboard_bump_offset=[outer_lower_width-outer_lower_rounding-keyboard_bump_rounding,0,3];
+keyboard_bump_offset=[outer_lower_width-outer_lower_rounding-keyboard_bump_rounding,0,34];
 keyboard_bump_hollow_offset=[keyboard_bump_offset[0]+global_thickness,keyboard_bump_offset[1]-global_nudge,keyboard_bump_offset[2]+global_thickness];
-keyboard_support_front_width=0.1;
+keyboard_support_front_width=1.4;
 keyboard_support_front_depth=outer_lower_depth+outer_rear_depth-global_thickness;
-keyboard_support_front_height=1;
-keyboard_support_front_rounding=0.05;
-keyboard_support_front_offset=[3,outer_lower_depth-keyboard_support_front_depth,1];
+keyboard_support_front_height=9.9;
+keyboard_support_front_rounding=keyboard_support_front_width/2;
+keyboard_support_front_offset=[32.8+global_thickness+global_gap,outer_lower_depth-keyboard_support_front_depth,4.1+global_thickness+global_gap];
 keyboard_support_rear_width=keyboard_support_front_width;
 keyboard_support_rear_depth=keyboard_support_front_depth;
 keyboard_support_rear_height=keyboard_support_front_height;
 keyboard_support_rear_rounding=keyboard_support_front_rounding;
-keyboard_support_rear_offset=[3,outer_lower_depth-keyboard_support_front_depth-global_thickness,3.5];
-mouse_nav_height=1;
-mouse_nav_width=1;
-mouse_nav_offset=[1.5,0,3];
-mouse_nav_rounding=0.1;
-mouse_left_height=0.5;
-mouse_left_width=0.5;
-mouse_left_offset=[2.1,0,2.3];
-mouse_left_rounding=0.1;
+keyboard_support_rear_offset=[32.8+global_thickness+global_gap,outer_lower_depth-keyboard_support_front_depth-global_thickness,41.1+global_thickness+global_gap];
+mouse_nav_height=13.5;
+mouse_nav_width=13.5;
+mouse_nav_offset=[9.4+global_thickness+global_gap,0,38.8+global_thickness+global_gap];
+mouse_nav_rounding=0.5;
+mouse_left_height=7.2;
+mouse_left_width=7.2;
+mouse_left_offset=[18.5+global_thickness+global_gap,0,29.6+global_thickness+global_gap];
+mouse_left_rounding=0.5;
 mouse_right_height=mouse_left_height;
 mouse_right_width=mouse_left_width;
-mouse_right_offset=[1.2,0,2.3];
+mouse_right_offset=[7.3+global_thickness+global_gap,0,29.6+global_thickness+global_gap];
 mouse_right_rounding=mouse_left_rounding;
-display_height=6;
-display_width=10;
-display_offset=[0.5,0,6];
+display_height=76.3+(2*global_gap);
+display_width=121+(2*global_gap);
+display_offset=[global_thickness,0,65.6-global_gap];
 //display_rounding=0.1;
-display_bump_rounding=0.1;
-display_bump_height=1.5;
-display_bump_width=0.5+outer_upper_rounding+display_bump_rounding;
+display_bump_rounding=1;
+display_bump_height=18.5+(2*global_gap);
+display_bump_width=11.2+global_gap+outer_upper_rounding+display_bump_rounding;
 display_bump_depth=outer_upper_depth;
-display_bump_offset=[-display_bump_width+outer_upper_rounding+display_bump_rounding,0,10];
+display_bump_offset=[-display_bump_width+outer_upper_rounding+display_bump_rounding,0,107-global_gap+global_thickness+global_gap];
 display_bump_hollow_offset=[display_bump_offset[0]+global_thickness,display_bump_offset[1]-global_nudge,display_bump_offset[2]+global_thickness];
-usbc_bump_rounding=0.1;
-usbc_bump_height=4.5;
-usbc_bump_width=0.25+outer_upper_rounding+usbc_bump_rounding;
+usbc_bump_rounding=1;
+usbc_bump_height=41.2+(2*global_gap);
+usbc_bump_width=3+global_gap+outer_upper_rounding+usbc_bump_rounding;
 usbc_bump_depth=outer_upper_depth;
-usbc_bump_offset=[outer_upper_width-outer_upper_rounding-usbc_bump_rounding,0,7.5];
+usbc_bump_offset=[outer_upper_width-outer_upper_rounding-usbc_bump_rounding,0,100-global_gap+global_thickness+global_gap];
 usbc_bump_hollow_offset=[usbc_bump_offset[0]+(global_thickness*0),usbc_bump_offset[1]-global_nudge,usbc_bump_offset[2]+global_thickness]; //(global_thickness*0) to make is 2x thickness
-slider_panel_width=2;
-slider_panel_depth=0.4;
-slider_panel_height=2;
-slider_track_width=0.5;
+slider_panel_width=20;
+slider_panel_depth=6;
+slider_panel_height=15;
+slider_track_width=5;
 slider_offset=[outer_upper_width,-(slider_panel_width+(2*slider_track_width))/2,usbc_bump_offset[2]+global_thickness];
 slider_hollow_growth_factor=1.10;
 slider_hollow_y_offset=-(((slider_panel_width*slider_hollow_growth_factor)+(2*slider_track_width*slider_hollow_growth_factor))-(slider_panel_width+(2*slider_track_width)))/2;
-screwhole_radius=0.22/2;
+screwhole_radius=2.2/2;
 screwhole_support_radius=screwhole_radius+global_thickness;
 screwhole_nudge=global_nudge;
 screwhole_offsets=[ //lateral offsets are to center of screwholes
-  [0.5,0,0.5],
-  [1.5,0,12.5],
-  [9.5,0,12.5],
-  [9.5,0,5.5],
+  [5+global_thickness+global_gap,0,4+global_thickness+global_gap],
+  [11.5+global_thickness+global_gap,0,146+global_thickness+global_gap],
+  [109.5+global_thickness+global_gap,0,146+global_thickness+global_gap],
+  [109.5+global_thickness+global_gap,0,62+global_thickness+global_gap],
 ];
 //holepeg_support_height=outer_upper_depth;
 holepeg_peg_height=global_pcb_thickness;
-holepeg_peg_radius=0.1;
-holepeg_support_radius=0.2;
+holepeg_peg_radius=1.2;
+holepeg_support_radius=3;
 holepeg_offsets=[ //lateral offsets are to center of screwholes
-  [3,0,0.5],
-  [4.5,0,12.5],
-  [4.2,0,5.5],
-  [7.5,0,5.5],
+  [28.5+global_thickness+global_gap,0,4+global_thickness+global_gap],
+  [43.5+global_thickness+global_gap,0,146+global_thickness+global_gap],
+  [43.5+global_thickness+global_gap,0,62+global_thickness+global_gap],
+  [77.5+global_thickness+global_gap,0,62+global_thickness+global_gap],
 ];
 holepeg_rear_offsets=[ //lateral offsets are to center of screwholes
-  [7,0,12.5],
-  [1,0,5.5],
+  [77.5+global_thickness+global_gap,0,146+global_thickness+global_gap],
+  [11.5+global_thickness+global_gap,0,62+global_thickness+global_gap],
 ];
-screwhole_counterbore_radius=0.3;
-screwhole_counterbore_radius_primary=0.25;
-pqty_reset_button_hole_radius=0.15;
-pqty_reset_button_hole_offset=[8.5,0,11];
-sd_slot_offset=[5,0.5,outer_upper_height+outer_lower_height-global_thickness-global_nudge];
-sd_slot_width=2;
-sd_slot_depth=1;
-cable_hook_strut_length=1.3;
-cable_hook_saddle_length=1.5;
-cable_hook_rounding=0.2;
-lower_cable_hook_offset=[0,-2,0];
-upper_cable_hook_offset=[-outer_rear_depth,11.7,0];
-screwdriver_slot_radius=0.6;
-screwdriver_slot_offset=[0,outer_rear_depth-screwdriver_slot_radius-global_thickness-global_nudge,3];
+screwhole_counterbore_radius=4;
+screwhole_counterbore_radius_primary=2.5;
+pqty_reset_button_hole_radius=2.5;
+pqty_reset_button_hole_offset=[101.5+global_thickness+global_gap,0,128.3+global_thickness+global_gap];
+camera_hole_radius=3.25;
+camera_hole_offset=[28.4+global_thickness+global_gap,0,133.8+global_thickness+global_gap];
+sd_slot_offset=[53.8+global_thickness+global_gap,1.5,outer_upper_height+outer_lower_height-global_thickness-global_nudge];
+sd_slot_width=12;
+sd_slot_depth=8;
+cable_hook_strut_length=13;
+cable_hook_saddle_length=15;
+cable_hook_rounding=1;
+lower_cable_hook_offset=[0,-20,0];
+upper_cable_hook_offset=[-outer_rear_depth,147,0];
+screwdriver_slot_radius=(outer_rear_depth-(2*global_thickness)-(2*global_nudge))/2;
+screwdriver_slot_offset=[0,outer_rear_depth-screwdriver_slot_radius-global_thickness-global_nudge,30];
 
 //slider
 translate(slider_offset)
@@ -194,7 +197,7 @@ for (i = [ 0 : len(screwhole_offsets)-1 ]) {
     screwhole(screwhole_support_height-global_nudge, screwhole_height, screwhole_support_radius, screwhole_radius, screwhole_nudge);
   } else {
     screwhole_support_height=outer_upper_depth;
-    screwhole_height=screwhole_support_height-(global_thickness*4);
+    screwhole_height=screwhole_support_height-(global_thickness);
     translate(screwhole_offsets[i])
     screwhole(screwhole_support_height-global_nudge, screwhole_height, screwhole_support_radius, screwhole_radius, screwhole_nudge);
   }
@@ -273,7 +276,7 @@ difference () {
       translate(lower_cable_hook_offset)
       union(){
         roundedcube([outer_rear_depth, global_thickness, cable_hook_strut_length], false, cable_hook_rounding, "zmax");
-        translate([0,0,cable_hook_strut_length-(2*global_thickness)])
+        translate([0,0,cable_hook_strut_length-global_thickness])
         roundedcube([outer_rear_depth, cable_hook_saddle_length, global_thickness], false, cable_hook_rounding, "all");
       }
       //lower cable hook
@@ -281,7 +284,7 @@ difference () {
       translate(upper_cable_hook_offset)
       union(){
         roundedcube([outer_rear_depth, global_thickness, cable_hook_strut_length], false, cable_hook_rounding, "zmax");
-        translate([0,0,cable_hook_strut_length-(2*global_thickness)])
+        translate([0,0,cable_hook_strut_length-global_thickness])
         roundedcube([outer_rear_depth, cable_hook_saddle_length, global_thickness], false, cable_hook_rounding, "all");
       }
     }
@@ -321,6 +324,10 @@ difference () {
     translate(pqty_reset_button_hole_offset)
     rotate(90,[-1,0,0])
     cylinder(h=outer_rear_depth+global_thickness, r1=pqty_reset_button_hole_radius, r2=pqty_reset_button_hole_radius, center=false, $fn=256);
+    //camera hole
+    translate(camera_hole_offset)
+    rotate(90,[-1,0,0])
+    cylinder(h=outer_rear_depth+global_thickness, r1=camera_hole_radius, r2=camera_hole_radius, center=false, $fn=256);
     //sd slot hole
     translate(sd_slot_offset)
     cube([sd_slot_width, sd_slot_depth, global_thickness+(2*global_nudge)], false);
@@ -339,3 +346,6 @@ difference () {
   translate ([0,0,-global_nudge])
   cylinder(h=outer_upper_width-global_thickness, r1=screwdriver_slot_radius, r2=screwdriver_slot_radius, center=false, $fn=256);
 }
+//TODO: swap the front and back keyboard supports so it donesn't interfer with screwdriver slot
+//TODO: fix bumps
+//TODO fix slider

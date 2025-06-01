@@ -6,5 +6,3 @@ module screwhole(support_height, screwhole_height, support_radius, screwhole_rad
     cylinder(h=screwhole_height, r1=screwhole_radius, r2=screwhole_radius, center=false, $fn=256);
   }
 }
-
-

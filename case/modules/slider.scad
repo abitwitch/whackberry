@@ -25,7 +25,7 @@ module slider(panel_width, panel_depth, panel_height, track_width){
     //tab
     difference () {
         translate([panel_width/2,0,panel_height/2])
-        cylinder(h = tab_hieght, r1 = panel_width/2, r2 = panel_width/2, center = true, $fn=8);
+        cylinder(h = tab_hieght, r1 = panel_width/2, r2 = panel_width/2, center = true, $fn=256);
         translate([0,panel_depth,0])
         cube([panel_width, panel_width, panel_height], false);
     }
