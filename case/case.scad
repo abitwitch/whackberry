@@ -7,6 +7,7 @@ include <./modules/holepeg.scad>
 //Vars (UNITS = mm)
 global_thickness=4;
 global_gap=3.5;
+global_gap_tight=1.5;
 global_nudge=0.01; //used as a tiny push to prevent two shapes from overlapping in digital rendering
 global_pcb_thickness=1.4;
 outer_upper_height=92+global_thickness+global_gap;
@@ -15,7 +16,7 @@ outer_upper_depth=12+global_thickness+global_gap;
 outer_upper_rounding=1;
 outer_lower_height=56+global_thickness+global_gap;
 outer_lower_width=outer_upper_width;
-outer_lower_depth=8+(2*global_thickness)+(2*global_gap);;
+outer_lower_depth=8+global_thickness+global_gap;
 outer_lower_rounding=outer_upper_rounding;
 outer_rear_depth=16+global_thickness+global_gap;
 keyboard_height=52.5;
@@ -32,12 +33,12 @@ keyboard_support_front_width=1.4;
 keyboard_support_front_depth=outer_lower_depth+outer_rear_depth-global_thickness;
 keyboard_support_front_height=9.9;
 keyboard_support_front_rounding=keyboard_support_front_width/2;
-keyboard_support_front_offset=[32.8+global_thickness+global_gap,outer_lower_depth-keyboard_support_front_depth,4.1+global_thickness+global_gap];
+keyboard_support_front_offset=[32.8+global_thickness+global_gap,outer_lower_depth-keyboard_support_front_depth,41.1+global_thickness+global_gap];
 keyboard_support_rear_width=keyboard_support_front_width;
 keyboard_support_rear_depth=keyboard_support_front_depth;
 keyboard_support_rear_height=keyboard_support_front_height;
 keyboard_support_rear_rounding=keyboard_support_front_rounding;
-keyboard_support_rear_offset=[32.8+global_thickness+global_gap,outer_lower_depth-keyboard_support_front_depth-global_thickness,41.1+global_thickness+global_gap];
+keyboard_support_rear_offset=[32.8+global_thickness+global_gap,outer_lower_depth-keyboard_support_front_depth-global_thickness,4.1+global_thickness+global_gap];
 mouse_nav_height=13.5;
 mouse_nav_width=13.5;
 mouse_nav_offset=[9.4+global_thickness+global_gap,0,38.8+global_thickness+global_gap];
@@ -50,9 +51,9 @@ mouse_right_height=mouse_left_height;
 mouse_right_width=mouse_left_width;
 mouse_right_offset=[7.3+global_thickness+global_gap,0,29.6+global_thickness+global_gap];
 mouse_right_rounding=mouse_left_rounding;
-display_height=76.3+(2*global_gap);
+display_height=75.9+(2*global_gap_tight);
 display_width=121+(2*global_gap);
-display_offset=[global_thickness,0,65.6-global_gap];
+display_offset=[global_thickness,0,65.6+global_thickness+global_gap-global_gap_tight];
 //display_rounding=0.1;
 display_bump_rounding=1;
 display_bump_height=18.5+(2*global_gap);
@@ -74,7 +75,7 @@ slider_offset=[outer_upper_width,-(slider_panel_width+(2*slider_track_width))/2,
 slider_hollow_growth_factor=1.10;
 slider_hollow_y_offset=-(((slider_panel_width*slider_hollow_growth_factor)+(2*slider_track_width*slider_hollow_growth_factor))-(slider_panel_width+(2*slider_track_width)))/2;
 screwhole_radius=2.2/2;
-screwhole_support_radius=screwhole_radius+global_thickness;
+screwhole_support_radius=3;
 screwhole_nudge=global_nudge;
 screwhole_offsets=[ //lateral offsets are to center of screwholes
   [5+global_thickness+global_gap,0,4+global_thickness+global_gap],
@@ -102,7 +103,7 @@ pqty_reset_button_hole_radius=2.5;
 pqty_reset_button_hole_offset=[101.5+global_thickness+global_gap,0,128.3+global_thickness+global_gap];
 camera_hole_radius=3.25;
 camera_hole_offset=[28.4+global_thickness+global_gap,0,133.8+global_thickness+global_gap];
-sd_slot_offset=[53.8+global_thickness+global_gap,1.5,outer_upper_height+outer_lower_height-global_thickness-global_nudge];
+sd_slot_offset=[53.8+global_thickness+global_gap,2.1,outer_upper_height+outer_lower_height-global_thickness-global_nudge];
 sd_slot_width=12;
 sd_slot_depth=8;
 cable_hook_strut_length=13;
@@ -110,12 +111,12 @@ cable_hook_saddle_length=15;
 cable_hook_rounding=1;
 lower_cable_hook_offset=[0,-20,0];
 upper_cable_hook_offset=[-outer_rear_depth,147,0];
-screwdriver_slot_radius=(outer_rear_depth-(2*global_thickness)-(2*global_nudge))/2;
+screwdriver_slot_radius=(outer_rear_depth-(2*global_thickness)-(2*global_nudge)-global_pcb_thickness-global_gap)/2;
 screwdriver_slot_offset=[0,outer_rear_depth-screwdriver_slot_radius-global_thickness-global_nudge,30];
 
 //slider
 translate(slider_offset)
-//translate([0,0,$t*slider_panel_height])
+//translate([0,0,$t*slider_panel_height]) //animation
 rotate(90,[0,0,1])
 slider(slider_panel_width,slider_panel_depth,slider_panel_height,slider_track_width);
 
@@ -154,14 +155,15 @@ difference () {
     cube([outer_lower_width-(global_thickness*2), outer_lower_depth-global_thickness, 2*(outer_upper_rounding+outer_lower_rounding)],false);
     //keyboard bump hollow
     translate(keyboard_bump_hollow_offset)
-    translate([-global_thickness,0,0])
-    roundedcube([keyboard_bump_width-global_thickness, outer_lower_depth-(global_thickness), keyboard_bump_height-(2*global_thickness)], false, keyboard_bump_rounding, "ymax");
+    translate([-(2*global_thickness),0,0])
+    roundedcube([keyboard_bump_width, outer_lower_depth-(global_thickness), keyboard_bump_height-(2*global_thickness)], false, keyboard_bump_rounding, "ymax");
     //display bump hollow
     translate(display_bump_hollow_offset)
-    roundedcube([display_bump_width-(global_thickness)+global_nudge, outer_upper_depth-(global_thickness), display_bump_height-(2*global_thickness)], false, display_bump_rounding, "ymax");
+    roundedcube([display_bump_width+global_nudge, outer_upper_depth-(global_thickness), display_bump_height-(2*global_thickness)], false, display_bump_rounding, "ymax");
     //usbc bump hollow
     translate(usbc_bump_hollow_offset)
-    roundedcube([usbc_bump_width-(global_thickness), slider_panel_width/2, usbc_bump_height-(2*global_thickness)], false, usbc_bump_rounding, "ymax");
+    translate([-global_thickness,0,0])
+    roundedcube([usbc_bump_width, slider_panel_width/2, usbc_bump_height-(2*global_thickness)], false, usbc_bump_rounding, "ymax");
     //Keyboard hole
     translate(keyboard_offset) 
     roundedcube([keyboard_width, outer_lower_depth*2, keyboard_height], false, keyboard_rounding, "y");
@@ -255,7 +257,7 @@ for (i = [ 0 : len(holepeg_rear_offsets)-1 ]) {
   holepeg(holepeg_support_height, holepeg_peg_height, holepeg_support_radius, holepeg_peg_radius);
 }
 //back piece
-#color("green")
+color("green")
 rotate([0,180,180])
 mirror([0,0,1])
 difference () {
@@ -297,14 +299,15 @@ difference () {
     cube([outer_lower_width-(global_thickness*2), outer_lower_depth-global_thickness, 2*(outer_upper_rounding+outer_lower_rounding)],false);
     //keyboard bump hollow
     translate(keyboard_bump_hollow_offset)
-    translate([-global_thickness,0,0])
-    roundedcube([keyboard_bump_width-global_thickness, outer_lower_depth-(global_thickness), keyboard_bump_height-(2*global_thickness)], false, keyboard_bump_rounding, "ymax");
+    translate([-(2*global_thickness),0,0])
+    roundedcube([keyboard_bump_width, outer_lower_depth-(global_thickness), keyboard_bump_height-(2*global_thickness)], false, keyboard_bump_rounding, "ymax");
     //display bump hollow
     translate(display_bump_hollow_offset)
-    roundedcube([display_bump_width-(global_thickness)+global_nudge, outer_upper_depth-(global_thickness), display_bump_height-(2*global_thickness)], false, display_bump_rounding, "ymax");
+    roundedcube([display_bump_width+global_nudge, outer_upper_depth-(global_thickness), display_bump_height-(2*global_thickness)], false, display_bump_rounding, "ymax");
     //usbc bump hollow
     translate(usbc_bump_hollow_offset)
-    roundedcube([usbc_bump_width-(global_thickness), slider_panel_width/2, usbc_bump_height-(2*global_thickness)], false, usbc_bump_rounding, "ymax");
+    translate([-global_thickness,0,0])
+    roundedcube([usbc_bump_width, slider_panel_width/2, usbc_bump_height-(2*global_thickness)], false, usbc_bump_rounding, "ymax");
     //back screwholes (counterbore) - holes - major (where screw head can fit through)
     rotate([0,180,180])
     mirror([0,0,1])
@@ -346,6 +349,3 @@ difference () {
   translate ([0,0,-global_nudge])
   cylinder(h=outer_upper_width-global_thickness, r1=screwdriver_slot_radius, r2=screwdriver_slot_radius, center=false, $fn=256);
 }
-//TODO: swap the front and back keyboard supports so it donesn't interfer with screwdriver slot
-//TODO: fix bumps
-//TODO fix slider
