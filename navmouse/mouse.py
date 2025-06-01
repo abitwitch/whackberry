@@ -2,7 +2,8 @@ import time
 from pynput.mouse import Button, Controller
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
-speed=5 #1-10
+time_wait=0.1
+mas_speed=5 #pixels per time wait
 leftPin=15
 rightPin=23
 upPin=19
@@ -19,6 +20,8 @@ GPIO.setup(rightclickPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 centerPin_prevval=GPIO.input(centerPin)==GPIO.HIGH
 rightclick_prevval=GPIO.input(rightclick)==GPIO.HIGH
 mouseReady=False
+moving_streak=0
+prevInput=0
 while True:
   if not mouseReady:
     try:
@@ -27,14 +30,24 @@ while True:
     except:
       time.sleep(2)
       continue
+  moving=False
+  pixels_to_move=1+min(max_speed,int(moving_streak*time_wait*2))
   if GPIO.input(leftPin)==GPIO.HIGH:
-    mouse.move(-1,0)
+    mouse.move(-pixels_to_move,0)
+    moving=True
   if GPIO.input(rightPin)==GPIO.HIGH:
-    mouse.move(1,0)
+    mouse.move(pixels_to_move,0)
+    moving=True
   if GPIO.input(upPin)==GPIO.HIGH:
-    mouse.move(0,-1)
+    mouse.move(0,-pixels_to_move)
+    moving=True
   if GPIO.input(downPin)==GPIO.HIGH:
-    mouse.move(0,1)
+    mouse.move(0,pixels_to_move)
+    moving=True
+  if moving:
+    moving_streak+=1
+  else:
+    moving_streak=0
   centerPin_curval=GPIO.input(centerPin)==GPIO.HIGH
   if centerPin_curval!=centerPin_prevval:
     centerPin_prevval=centerPin_curval
@@ -45,7 +58,7 @@ while True:
     rightclick_prevval=rightclickPin_curval
     if rightclick_prevval:
       mouse.click(Button.right)
-  time.sleep(0.001/speed)
+  time.sleep(time_wait)
  
  
 
