@@ -1,30 +1,55 @@
-# whackberry
-Offline and disconnected cyberdeck for password managment. 
-
-
 # WhackberryPi
-Disconnected Cyberdeck for password management
+Disconnected Cyberdeck for password management.
 
-## Hardware
+Features:
+- Disconnected computer (with display) with no wireless connectivity on any part of the device
+- QWERTY keyboard with access to most standard symbols
+- A mouse for navigating the OS in GUI mode
+- A additional Micro SD card reader that can be used to create backups of passwords for storage in a secure secondary location
+- A Camera to take pictures that are unable to reach the internet (useful for QR backup codes of 2FA apps)
+- A disconnected microcontroller that is able to transmit data from the disconnected computer to another computer using a data diode
+
+How the data diode works:
+1. The disconnected computer has a special command for transmitting data (`ir-sender`). This program can take standard input in bash.
+2. The program encrypts the input. *NOTE* that the hardware only suport very weak and out-of-date encryption. Although it may provide a small layer of security, it should not be relied upon. This means anyone able to read the IR led blinking from inside the case, may be able to eventually decypt the messages. This seems like a low-level risk.
+3. The program break the message into packets then into pulses and used the IR LED light transmit the password. Since there is no way to read messages from the LED, this is a one way communication. This is the data diode and it uses the "fire and forget" principle. This means errors in reading the message is possible. A check sum is part of the protocol to account for this possible error.
+4. On the other side of the LED there is a IR Reciever. It is connected to a microcontroller that is completely disconnected* from the raspberry PI. The only way to communicate is over the air-gap via IR (one way).
+*Note that the microcontroller is connected via power (5v and Ground). This allows the disconnected computer to be powered when the microcontroller is pluged into a computer. This does technically open the possibility of side channel attacks. 
+5. The signal is recieved, decapsulated, combined, and de-crypted. The checksum is verified before decryption and the process will only continue if the checksum and decryption are successful.
+6. When plugged into a computer, the air-gapped microcontroller acts as a keyboard and the message recieved is transmitted as keystrokes to the computer.
+
+Setup:
+To set up a device, follow the instructions in each section of this readme from top to bottom. 
+
+## Main Hardware
 - Raspberry Pi Zero v1.3 [link](https://www.adafruit.com/product/2885)
 - M5 CardKB (v1.1)
 - HDMI 5" Display [link](https://www.adafruit.com/product/2232)
 - Raspberry Pi Camera Module 3 [link](https://www.adafruit.com/product/5657)
-- Thru-hole 5-way Navigation switch (used as a mouse) [link](https://www.adafruit.com/product/504)
-- TODO: REMOVE AND REPLACE MicroSD card breakout board (x2) [link](https://www.adafruit.com/product/254)
-- ATECC608 Breakout Board ([link](https://www.adafruit.com/product/4314)
 - Infrared LED [link](https://www.adafruit.com/product/387)
 - Infrared Receiver Sensor [link](https://www.adafruit.com/product/157)
-- Raspberry Pi Pico (RP2040 - no wifi) [link](https://www.adafruit.com/product/5525)
+- QT Py RP2040 [link](https://www.adafruit.com/product/4900)
 - At least 1 micro CD card
 - A Raspberry Pi with internet (for setup only)
-- A USB A micro SD Card reader (Optional) [link](https://shop.sandisk.com/en-ca/products/accessories/memory-card-readers/sandisk-quickflow-microsd-usb-a-memory-card-reader?sku=SDDR-B731-GN6NN)
 
-### PCB Mounting accessories
+## Supporting Hardware and PCB Mounting / cable accessories
 - SMD Grove Female Header [link](https://www.mouser.ca/ProductDetail/Seeed-Studio/114020164?qs=7MVldsJ5Uayw%2FOfizq4F8w%3D%3D)
 - USB Type-A Jack [link](https://www.mouser.ca/ProductDetail/Amphenol-FCI/87583-0010BHLF?qs=HGI6s9c03KdFNxR4%2F7F3Vg%3D%3D)
+- HDMI cable [link1](https://www.adafruit.com/product/3552) [link2](https://www.adafruit.com/product/3549) [link3](https://www.adafruit.com/product/3561)
+- Thru-hole 5-way Navigation switch (used as a mouse) [link](https://www.adafruit.com/product/504)
+- 2x Buttons [link](https://www.adafruit.com/product/367)
+- Pogo pins [link](https://www.adafruit.com/product/5381)
+- Stand-off screws (the camera module may require a different size) [link](https://www.adafruit.com/product/3299)
+- 1x 10k resistor [link](https://www.adafruit.com/product/2784)
+- Male-male pin headers [link](https://www.adafruit.com/product/3009)
+- USB Type C Breakout Board [link](https://www.adafruit.com/product/4090)
+- SD card reader - SanDisk MobileMate USB 3.0 Reader [link](https://shop.sandisk.com/en-ca/products/accessories/memory-card-readers/sandisk-quickflow-microsd-usb-a-memory-card-reader?sku=SDDR-B731-GN6NN)
+- Solder and an soldering iron
 
-## SD card setup
+## Setup guide
+
+### 1.00: SD card setup
+This part can be done on any trusted computer connected to the internet
 1. Download Official Raspberry Pi Imager
 2. Select Legacy, 32-bit - Debian Bullseye (released 2024-10-22)
 3. Flash the SD card and then access the files on the SD card
@@ -39,34 +64,46 @@ Disconnected Cyberdeck for password management
        ```
    2. Enable i2c. Under `bootfs > config.txt`, uncomment "dtparam=i2c_arm=on". Follow instructions [here](https://raspberrypi.stackexchange.com/questions/83457/can-i-enable-i2c-before-first-boot)
 
-## Configure the OS
+### 2.00: Configure the OS
 I suggest doing the configuartion from another pi with internet. Plug the SD card into a internet-connected Raspberry Pi and boot it. Follow the commands to set up your account and apply any updates. Reboot the device.
 
-### Enable i2c (optional)
+#### 2.01: Enable i2c
 1. In terminal type, `sudo raspi-config`
 2. `Interface Options > I2C > Yes  (enable) > OK > Finish`
 
-### Turn on boot to terminal by default (optional)
+#### 2.02: Turn on boot to terminal by default (optional)
 1. In terminal type, `sudo raspi-config`
 2. `System Options > Boot / Auto login > Console Autologin > Finish`
 3. In subsequent boots, if you want a GUI, enter `startx` into the terminal
 
-### Updrade all apps
-- In teminal: `sudo apt update && sudo apt full-upgrade` (tried to see if would fix chromium on zero)
-- Install circuit python: `sudo pip3 install --break-system-packages adafruit-blinka`
-- Install PyUserInput for mouse: `sudo pip3 install PyUserInput pynput`
-- Install web3 for ethereum wallet generation: `sudo pip3 install web3`
+#### 2.03: Updrade all apps / install new apps
+1. In teminal: `sudo apt update && sudo apt full-upgrade` (tried to see if would fix chromium on zero)
+2. Install password manager `sudo apt-get install pass`
+3. Install password manager GUI `sudo apt-get install qtpass`
+4. Install a game (helpful for using the system to build up randomness) `sudo apt-get install ninvaders`
+5. Install circuit python: `sudo pip3 install --break-system-packages adafruit-blinka`
+6. Install PyUserInput for mouse: `sudo pip3 install PyUserInput pynput`
+7. Install web3 for ethereum wallet generation: `sudo pip3 install web3`
 
-### CarKB setup
+#### 2.04: Install Electum
+1. Go to [https://electrum.org/#download](https://electrum.org/#download)
+2. Follow the instructions for "Installation from Python sources" (tested with version 4.5.8)
+3. For consistency create and install to `~/electrum` folder
+
+#### 2.05: Copy Etherium wallet script
+1. `mkdir ~/cryptowallet`
+2. Copy `cryptowallet/gen-eth-wallet.py` from this repo to `~/cryptowallet/gen-eth-wallet.py` on the raspberry pi
+
+#### 2.06: CarKB setup
 - Follow instructions [here](https://github.com/ian-antking/cardkb)
 - *add `sudo` to `modprobe uinput`
 
-### Camera Setup
+#### 2.07: Camera Setup
 - Just plug and play
 - `libcamera-hello` to test
 - `libcamera-jpeg -o /path/to/file.jpg` to take a picture
 
-### Set up 5-way navi mouse
+#### 2.08: Set up 5-way navi mouse
 Wiring
 1. Connect 3.3v output from the Raspberri Pi to the common pin. For me, the was the pin farthest from the little "L" on the back of the switch
 2. Connect 10k ohm resesistors to all the remaining pins and attatch to GPIO pins on the PI
@@ -74,13 +111,13 @@ Software
 1. 'sudo nano /etc/xdg/lxsession/LXDE-pi/autostart`
 2. Add this line to the end of the file, then save and exit: `@/home/user/navmouse/mouselauncher.sh`
 3. `mkdir /home/user/navmouse`
-4. Copy `mouse.py` and `navmouselauncher.sh` to `/home/user/navmouse`
+4. Copy `navmouse/mouse.py` and `navmouse/navmouselauncher.sh` from this repo to `/home/user/navmouse`
 5. `sudo chmod +x /home/user/navmouse/*`
 
-### Infrared Transmitter
+#### 2.09: Infrared Transmitter
 1. Create a RAM disk for storing output:
    1. Add `newramdisk  /mnt/ramdisk  tmpfs  rw,size=1M  0   0` to `/etc/fstab``mkdir /home/user/ir-sender`
-2. Copy `ir-sender` to the folder `/home/user/ir-sender`
+2. Copy `ir-protocol/ir-sender` from this repo to the folder `/home/user/ir-sender`
 3. `chmod +x /home/user/ir-sender`
 4. Add these lines `/home/user/.profile`
    ```
@@ -91,7 +128,7 @@ Software
 6. Generate new key: `ir-sender --genkey`
 7. Copy the contents of the json and use it when setting up the Infrared Reciever
 
-### Infrared Reciever
+### 2.10: Infrared Reciever
 This part of the device is on an isolated device that emulates a keyboard when plugged into the computer.
 On a PC connected to the Pico
 1. Download circuit python for the QTPy RP2040 ([link](https://circuitpython.org/board/adafruit_qtpy_rp2040/)) (I used CircuitPython 9.2.6)
@@ -104,98 +141,46 @@ On a PC connected to the Pico
 9. Create a new file at the top level called `private_key.json` and put the json contents in it generated when setting up the Infrared Transmitter
 
 
-TODO
-- 3d case
-- setup HID to act as a security key
-- Commandline crypto wallet (bip39? electrum? bitcoin-core?)
-- Nice to have: ir-sender GUI using tkinter
-- Clean up this README
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Start system init (online) 
-1. Download the Raspberry Pi Imager from [here](https://www.raspberrypi.com/software/)
-2. Select latest Operating System with decktop support. At writing this, is was "Raspberry Pi OS with desktop (Debian version: 12 - bookworm)"
-3. Choose an SD card and write to it. 
-4. Install password manager
-   1. `sudo apt-get install pass`
-   2. `sudo apt-get install qtpass`
-   3. `sudo apt-get install ninvaders`
-5. Install Bitcoin BTC Offline Key Generator
-   1. `mkdir /home/user/btc`
-   2. `cd /home/user/btc`
-   3. `wget https://github.com/pointbiz/bitaddress.org/archive/refs/tags/v3.3.0.zip`
-   4. `unzip bitaddress.org-v3.3.0.zip`
-6. Install Etherium ETH Offline Key Generator
-   1. `mkdir /home/user/eth`
-   2. `cd /home/user/eth`
-   3. `wget https://github.com/MyEtherWallet/MyEtherWallet/releases/download/v6.9.17/MyEtherWallet-v6.9.17-Offline.zip` (get latest version)
-   4. `unzip MyEtherWallet-v6.9.17-Offline.zip`
-7. Download reference material
-   1. `mkdir /home/user/referencepages`
-   2. `cd /home/user/referencepages`
-   3. Download a pdf of `https://www.bitcoin.com/get-started/setting-up-your-own-cold-storage-bitcoin-wallet/`
-   4. Download a pdf of `https://help.myetherwallet.com/en/articles/6512619-using-mew-offline/`
-   5. Download a pdf of `https://help.myetherwallet.com/en/articles/6167899-how-to-create-a-cold-wallet-a-k-a-paper-wallet`
-8. Download wikipedia
-   1. TODO
-
-
-## Finish system init (offline) 
-1. Use system for 5-10 minutes to generate entopy (try `ninvaders`, or browse wikipedia)
-2. Set up password manager
+### 3.00: Finish system init (offline) 
+Only perform these steps when you're done setting up the device and ready to never connected to the internet again
+1. If the SD card is still in the Raspberry Pi you were using for setup, move it to the offline Raspberry Pi Zero. 
+2. Use system for 5-10 minutes to generate entopy (try `ninvaders`)
+3. Set up password manager
    1. Generate key
-      1. `gpg --default-new-key-algo rsa4096 --gen-key`
+      1. `gpg --gen-key`
       2. Real name: user
       3. Email: [empty]
       4. `O` for okay
       5. Enter a password (this will be the master password for the password manager)
       6. Note the id of the key. This will be a lond alphanumberic sequence right above "uid"
+   2. Set key to never expire
+      1. `gpg --edit-key key-id-as-noted-above`
+      2. `expire`
+      3. enter `0`
+      4. `q` to quit (and `y` to save changes)
    2. `pass init key-id-as-noted-above`
-3. Generate Bitcoin BTC wallet
-   1. Open Firefox and go to `file://home/user/btc/bitaddress.org-v3.3.0/bitaddress.org.html`
-   2. Follow instructions to generate randomness
-   3. Record the SECRET key in the password manager. This should stay offline until access to its content is required.
-   4. The SHARE key should be kept in the password manager too, but can be share freely and used to deposit into. 
-4. Generate Etherium ETH wallet
-   1. Open Firefox and go to `file://home/user/eth/index.html`
-   2. Click "Create Wallet", then "Software", then "Keystore File"
-   3. Enter a password and click "Create Wallet", then "Acknoledge & Download" (a file will download)
-   4. Click "Access Wallet", then "Software", then "Keystore"
-   5. Click "Select File" then select the file you just downloaded
-   6. Enter the password you just created and click "Access Wallet"
-   7. Click the "hamburger button" in the top left of the screen, then use the "PORTFOLIO VALUE" dropdown to select "View paper wallet"
-   8. Record the SECRET key in the password manager. This should stay offline until access to its content is required.
-   9. The SHARE key should be kept in the password manager too, but can be share freely and used to deposit into. 
+4. Generate Bitcoin BTC wallet
+   1. Start electrum with this command `~/electrum/Electrum-4.5.8/run_electrum`
+   2. This application will run slowly. Be prepared to wait a few minutes between screens.
+   3. Follow prompts and be sure to save the new seed to the password manager (`pass`)
+   4. In the "Recieve" tab, create a never expiring request and save the public address to `pass` as well. You can use this to send money to the wallet.
+5. Generate Etherium ETH wallet
+   1. Run the command `python3 ~/cryptowallet/gen-eth-wallet.py`
+   2. Enter both the private key and the public key to the `pass` password manager
 
 ## Using the system
+- To start the GUI for the OS: `startx`
 - To add a password: `pass insert Path/to/name`
 - To use the password manager gui: `qtpass`
-- To browe wikipedia: TODO
+- To send a password to the QT py, `pass show Path/to/name | ir-sender`
 
 ## Accessing cold wallets (online) 
-1. Make sure to note any private keys used on the open internet. They are no longer totaly secure.
+1. Use `ir-sender` to send the target private key from the disconnected raspberry pi to a computer connect to the internet. Make sure to note any private keys or seeds being transfered. They are no longer totaly secure.
 2. For Bitcion BTC:
-   1. You can use any wallet that supports importing private keys to access the BTC. I'll include instructions for Electrum (v4.5.8) below.
-   2. Download and install the application. Be very careful to download from the offical page (https://electrum.org/#download)[https://electrum.org/#download]
-   3. Open the application and when prompted, select "Import Bitcoin addresses or private keys"
-   4. Enter the private key for Bitcoin BTC.
-   5. You can use the "Send" tab to send to any address. Start with a small amount to make sure everything is working.
+   1. Download and install the Electrum application. Be very careful to download from the offical page (https://electrum.org/#download)[https://electrum.org/#download]
+   2. Open the application and when prompted, select "Standard wallet" then "I already have a seed"
+   3. Enter the seed for the Bitcoin BTC wallet.
+   4. You can use the "Send" tab to send to any address. Start with a small amount to make sure everything is working.
 3. For Etherium ETH:
    1. You can use any wallet that supports importing private keys to access the BTC. I'll include instructions for MetaMask Firefox Extension (v12.6.2) below.
    2. Go to MetaMask's site. Be sure it's the official source: [https://metamask.io/download/](https://metamask.io/download/)
@@ -205,3 +190,17 @@ TODO
    6. Select "Add account or hardware wallet" then "Import account"
    7. Enter the private key for Etherium ETH.
    8. You can use the "Send" button to send to any address. Start with a small amount to make sure everything is working.
+
+## Case
+There is a 3D printable case included in this repository to help manage the cables and protect the devices.
+
+## Future work
+- setup HID to act as a security key
+- fix tempermental QTpy
+
+
+
+
+
+
+
