@@ -81,7 +81,7 @@ This part can be done on any trusted computer connected to the internet
    2. Enable i2c. Under `bootfs > config.txt`, uncomment "dtparam=i2c_arm=on". Follow instructions [here](https://raspberrypi.stackexchange.com/questions/83457/can-i-enable-i2c-before-first-boot)
 
 ### 2.00: Configure the OS
-I suggest doing the configuartion from another pi with internet. Plug the SD card into a internet-connected Raspberry Pi and boot it. Follow the commands to set up your account and apply any updates. Reboot the device.
+I suggest doing the configuartion from another pi with internet. Plug the SD card into a internet-connected Raspberry Pi and boot it. Follow the commands to set up your account and apply any updates. You can use a less secure password if you want, the more import one will be the one you use when setting up a GPG key. Reboot the device.
 
 #### 2.01: Enable i2c
 1. In terminal type, `sudo raspi-config`
@@ -97,9 +97,11 @@ I suggest doing the configuartion from another pi with internet. Plug the SD car
 2. Install password manager `sudo apt-get install pass`
 3. Install password manager GUI `sudo apt-get install qtpass`
 4. Install a game (helpful for using the system to build up randomness) `sudo apt-get install ninvaders`
-5. Install circuit python: `sudo pip3 install --break-system-packages adafruit-blinka`
-6. Install PyUserInput for mouse: `sudo pip3 install PyUserInput pynput`
-7. Install web3 for ethereum wallet generation: `sudo pip3 install web3`
+5. Install 7z for secure ziped exports: 'sudo apt-get install p7zip-full'
+6. Install circuit python: `sudo pip3 install --break-system-packages adafruit-blinka`
+7. Install PyUserInput for mouse: `sudo pip3 install PyUserInput pynput`
+8. Install web3 for ethereum wallet generation: `sudo pip3 install web3`
+
 
 #### 2.04: Install Electum
 1. Go to [https://electrum.org/#download](https://electrum.org/#download)
@@ -134,15 +136,18 @@ Software
 1. Create a RAM disk for storing output:
    1. Add `newramdisk  /mnt/ramdisk  tmpfs  rw,size=1M  0   0` to `/etc/fstab``mkdir /home/user/ir-sender`
 2. Copy `ir-protocol/ir-sender` from this repo to the folder `/home/user/ir-sender`
-3. `chmod +x /home/user/ir-sender`
-4. Add these lines `/home/user/.profile`
+3. Copy `ir-protocol/ir-sender-gui` from this repo to the folder `/home/user/Desktop/ir-sender-gui`
+4. `chmod +x /home/user/ir-sender`
+5. `chmod +x /home/user/Desktop/ir-sender-gui`
+6. Add these lines `/home/user/.profile`
    ```
    if [ -d "$HOME/ir-sender" ] ; then
    PATH="$PATH:$HOME/ir-sender"
    fi
    ```
-6. Generate new key: `ir-sender --genkey`
-7. Copy the contents of the json and use it when setting up the Infrared Reciever
+7. Generate new key: `ir-sender --genkey`
+8. Copy the contents of the json and use it when setting up the Infrared Reciever
+
 
 #### 2.10: Infrared Reciever
 This part of the device is on an isolated device that emulates a keyboard when plugged into the computer.
@@ -156,18 +161,24 @@ On a PC connected to the Pico
 8. Copy the contents of the `ir-receiver-code.py` to `code.py`
 9. Create a new file at the top level called `private_key.json` and put the json contents in it generated when setting up the Infrared Transmitter
 
+#### 2.11: Copy over the utility script
+1. `mkdir ~/utilities`
+2. Copy `utilities/exportbackup.sh` from this repo to `~/utilities/exportbackup.sh` on the raspberry pi
+3. `sudo chmod +x ~/utilities/exportbackup.sh`
+
 
 ### 3.00: Finish system init (offline) 
 Only perform these steps when you're done setting up the device and ready to never connected to the internet again
 1. If the SD card is still in the Raspberry Pi you were using for setup, move it to the offline Raspberry Pi Zero. 
 2. Use system for 5-10 minutes to generate entopy (try `ninvaders`)
-3. Set up password manager
+3. `mkdir ~/mydata`
+4. Set up password manager
    1. Generate key
       1. `gpg --gen-key`
       2. Real name: user
       3. Email: [empty]
       4. `O` for okay
-      5. Enter a password (this will be the master password for the password manager)
+      5. Enter a password (this will be the master password for the password manager). Make sure it is a secure password and do not share it. 
       6. Note the id of the key. This will be a lond alphanumberic sequence right above "uid"
    2. Set key to never expire
       1. `gpg --edit-key key-id-as-noted-above`
@@ -175,20 +186,36 @@ Only perform these steps when you're done setting up the device and ready to nev
       3. enter `0`
       4. `q` to quit (and `y` to save changes)
    2. `pass init key-id-as-noted-above`
-4. Generate Bitcoin BTC wallet
+5. Generate Bitcoin BTC wallet
    1. Start electrum with this command `~/electrum/Electrum-4.5.8/run_electrum`
    2. This application will run slowly. Be prepared to wait a few minutes between screens.
    3. Follow prompts and be sure to save the new seed to the password manager (`pass`)
    4. In the "Recieve" tab, create a never expiring request and save the public address to `pass` as well. You can use this to send money to the wallet.
-5. Generate Etherium ETH wallet
+6. Generate Etherium ETH wallet
    1. Run the command `python3 ~/cryptowallet/gen-eth-wallet.py`
    2. Enter both the private key and the public key to the `pass` password manager
 
 ## Using the system
+**Basic commands**
 - To start the GUI for the OS: `startx`
 - To add a password: `pass insert Path/to/name`
 - To use the password manager gui: `qtpass`
 - To send a password to the QT py, `pass show Path/to/name | ir-sender`
+
+**Saving a encrypted image**
+1. Take a picture `libcamera-jpeg -o /mnt/ramdisk/imagename.jpg` *note, raw image will not persist on reboot
+2. Encrypt the image `gpg -e -r key-id-as-noted-above /mnt/ramdisk/imagename.jpg -o ~/mydata/imagename.jpg.gpg`
+
+**Viewing a encrypted image**
+1. Decrypt the image `gpg -d ~/mydata/imagename.jpg.gpg -o /mnt/ramdisk/imagename.jpg`
+2. View the image here `/mnt/ramdisk/imagename.jpg` *note, image will not persist on reboot
+
+**Creating a full backup**
+This is meant to act as either an off site backup or a way to share all your data.
+1. Safely procure a un-used micro SD card. This prevent any contamination of your disconnected system.
+2. Create a backup. Run the script under `~/utilities/exportbackup.sh`
+3. Follow the prompts
+4. Copy the resulting file to the SD Card.
 
 ## Accessing cold wallets (online) 
 1. Use `ir-sender` to send the target private key from the disconnected raspberry pi to a computer connect to the internet. Make sure to note any private keys or seeds being transfered. They are no longer totaly secure.
