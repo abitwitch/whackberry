@@ -46,6 +46,22 @@ To set up a device, follow the instructions in each section of this readme from 
 - SD card reader - SanDisk MobileMate USB 3.0 Reader [link](https://shop.sandisk.com/en-ca/products/accessories/memory-card-readers/sandisk-quickflow-microsd-usb-a-memory-card-reader?sku=SDDR-B731-GN6NN)
 - Solder and an soldering iron
 
+## PCB
+There PCB (Printed Circuit Board) design is included in this repository. This can be ordered online for a PCB manufacturer. 
+
+**Schematic**
+![Schematic showing all connections for the PCB](pcb/images/schematic.png "Schematic of the PCB")
+
+**Design view**
+![Design view showing all the traces, cuts, and lables for the PCB](pcb/images/pcb_design.png "Design of the PCB")
+
+**Front view**
+![Render of the front of the PCB](pcb/images/pcb_front.png "Front of the PCB")
+
+**Back view**
+![Render of the back of the PCB](pcb/images/pcb_back.png "Back of the PCB")
+
+
 ## Setup guide
 
 ### 1.00: SD card setup
@@ -128,7 +144,7 @@ Software
 6. Generate new key: `ir-sender --genkey`
 7. Copy the contents of the json and use it when setting up the Infrared Reciever
 
-### 2.10: Infrared Reciever
+#### 2.10: Infrared Reciever
 This part of the device is on an isolated device that emulates a keyboard when plugged into the computer.
 On a PC connected to the Pico
 1. Download circuit python for the QTPy RP2040 ([link](https://circuitpython.org/board/adafruit_qtpy_rp2040/)) (I used CircuitPython 9.2.6)
@@ -193,6 +209,14 @@ Only perform these steps when you're done setting up the device and ready to nev
 
 ## Case
 There is a 3D printable case included in this repository to help manage the cables and protect the devices.
+
+**Front of case**
+![3D render of the front of the case](case/exports/preview_front.png "Front of case")
+
+**Back of case**
+![3D render of the back of the case](case/exports/preview_back.png "Back of case")
+
+
 
 ## Future work
 - setup HID to act as a security key

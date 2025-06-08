@@ -116,7 +116,7 @@ screwdriver_slot_offset=[0,outer_rear_depth-screwdriver_slot_radius-global_thick
 
 
 //Layout Config
-layout_printmode=1; //For design layout, set this to 0, for print layout, set to 1
+layout_printmode=0; //For design layout, set this to 0, for print layout, set to 1
 layout_front_rotate=[270*layout_printmode,0,0];
 layout_front_offset=[0,0,outer_upper_depth*layout_printmode];
 layout_back_rotate=[90*layout_printmode,0,0];
