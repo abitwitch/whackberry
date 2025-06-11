@@ -92,10 +92,11 @@ while True:
     lastrecieved = -1
   #read pulse
   while len(pulses)>0:
-    lastrecieved=time.time()
     pulse=pulses.popleft()
     pulse_val=(pulse-pulse_min)/pulse_increment
     pulse_val=round(pulse_val)
+    if pulse_val in [start_val,end_val,inst_val]:
+      lastrecieved=time.time()
     if pulse_val==start_val and stream_status=="ready" and packet_status=="receiving":
       stream_status="datastream"
     elif pulse_val==inst_val:
