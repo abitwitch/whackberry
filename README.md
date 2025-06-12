@@ -161,11 +161,19 @@ On a PC connected to the Pico
 8. Copy the contents of the `ir-receiver-code.py` to `code.py`
 9. Create a new file at the top level called `private_key.json` and put the json contents in it generated when setting up the Infrared Transmitter
 
-#### 2.11: Copy over the utility script
+#### 2.11: Copy over the utility scripts
 1. `mkdir ~/utilities`
 2. Copy `utilities/exportbackup.sh` from this repo to `~/utilities/exportbackup.sh` on the raspberry pi
 3. `sudo chmod +x ~/utilities/exportbackup.sh`
+4. Copy `utilities/importfromcsv.py` from this repo to `~/utilities/importfromcsv.py` on the raspberry pi
+5. `sudo chmod +x ~/utilities/importfromcsv.py`
 
+#### 2.12: Test the system
+1. Power down the raspberry pi you're using for setup. Move the SD card to the offline raspberry pi. 
+2. Test the system to make sure all features work as expected
+
+#### 2.12: Copy any passwords to the SD card
+Copy password from any existing password managers to the SD Card (make sure to place them in a appropriate folder as not to mess up the OS on the SD Card).
 
 ### 3.00: Finish system init (offline) 
 Only perform these steps when you're done setting up the device and ready to never connected to the internet again
@@ -198,9 +206,19 @@ Only perform these steps when you're done setting up the device and ready to nev
 ## Using the system
 **Basic commands**
 - To start the GUI for the OS: `startx`
-- To add a password: `pass insert Path/to/name`
+
+**Password manager**
+- To add a password: `pass insert path/to/name`
+- To generate a password: `pass generate path/to/name`
+- To add metadata: `pass insert path/to/name.meta` (there are other oiptions, this is just a suggestion)
+- To send a password to the QT py, `pass show path/to/name | ir-sender`
+- To edit a password, `pass edit path/to/name`
 - To use the password manager gui: `qtpass`
-- To send a password to the QT py, `pass show Path/to/name | ir-sender`
+
+**Import csv to password manager**
+1. Modify the script here: `~/utilities/importfromcsv.py` to match the fields in the CSV from your password manager
+2. Run `python3 ~/utilities/importfromcsv.py /path/to/passwords.csv`
+3. After successfully importing the passwords, delete the csv `rm /path/to/passwords.csv`
 
 **Saving a encrypted image**
 1. Take a picture `libcamera-jpeg -o /mnt/ramdisk/imagename.jpg` *note, raw image will not persist on reboot
