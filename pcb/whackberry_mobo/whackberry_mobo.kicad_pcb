@@ -5755,10 +5755,10 @@
 		(uuid "b24fec4a-53cb-4aae-a984-15649940748a")
 		(at 109.4 34.1)
 		(property "Reference" "Camera"
-			(at 22.5 3.5 180)
+			(at 21.6 -9.1 180)
 			(unlocked yes)
 			(layer "B.SilkS")
-			(uuid "61885ad3-bfba-4ab6-a4a3-a97400058ea5")
+			(uuid "164a1f40-8689-4bf1-bf24-e411e73dd181")
 			(effects
 				(font
 					(size 1 1)
@@ -5771,7 +5771,7 @@
 			(at 22.8 1.4 180)
 			(unlocked yes)
 			(layer "B.Fab")
-			(uuid "0eec9c27-efdf-4736-8e57-174c1f2f9dda")
+			(uuid "ebbc82f5-8dd1-4964-b728-b4a41eac3902")
 			(effects
 				(font
 					(size 1 1)
@@ -5785,7 +5785,7 @@
 			(unlocked yes)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "fbd83856-8d6c-46ac-a1a1-d6b0ee28c295")
+			(uuid "b86d6593-3e3b-4101-b4da-ef99eb4b872c")
 			(effects
 				(font
 					(size 1 1)
@@ -5799,7 +5799,7 @@
 			(unlocked yes)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "2b2b4a16-ada9-46b7-9469-247442afb28a")
+			(uuid "422cf773-4bf6-4ec9-bd39-64e68661685b")
 			(effects
 				(font
 					(size 1 1)
@@ -5813,7 +5813,7 @@
 			(unlocked yes)
 			(layer "B.Fab")
 			(hide yes)
-			(uuid "c9b5de94-79ac-44c4-aaf8-3163797bf882")
+			(uuid "e29b7e8f-3d35-48b1-bdbf-c631e21afe23")
 			(effects
 				(font
 					(size 1 1)
@@ -5835,13 +5835,13 @@
 			)
 			(fill none)
 			(layer "B.SilkS")
-			(uuid "315ae081-56dc-4079-9a10-601803b57829")
+			(uuid "9a309fa6-82e2-44dd-91aa-4502a5455f5a")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 22.6 -1.9 180)
 			(unlocked yes)
 			(layer "B.Fab")
-			(uuid "d460ffe3-bbf2-4666-aa21-1b5bcb2d80b1")
+			(uuid "0b9144c8-5ed1-4d9a-ba2f-e4c34082a43d")
 			(effects
 				(font
 					(size 1 1)
@@ -5852,35 +5852,35 @@
 		)
 		(pad "" np_thru_hole circle
 			(at 12.4 -11.6 90)
-			(size 2.2 2.2)
-			(drill 2.2)
+			(size 1.5 1.5)
+			(drill 2.75)
 			(layers "F&B.Cu" "*.Mask")
-			(solder_mask_margin 1.27)
-			(uuid "c7ac70d5-25de-437e-af70-357ec0c57fc5")
+			(solder_mask_margin 1.625)
+			(uuid "25879ece-8f1b-496d-983d-4d635db77817")
 		)
 		(pad "" np_thru_hole circle
 			(at 12.4 2.9 90)
-			(size 2.2 2.2)
-			(drill 2.2)
+			(size 1.5 1.5)
+			(drill 2.75)
 			(layers "F&B.Cu" "*.Mask")
-			(solder_mask_margin 1.27)
-			(uuid "d6bdde40-acaa-4f95-b0fe-53a45e6c2376")
+			(solder_mask_margin 1.625)
+			(uuid "4f7a742e-91f1-48c1-a1c5-b10cb6108f5e")
 		)
 		(pad "" np_thru_hole circle
 			(at 32.6 -11.6 90)
-			(size 2.2 2.2)
-			(drill 2.2)
+			(size 1.5 1.5)
+			(drill 2.75)
 			(layers "F&B.Cu" "*.Mask")
-			(solder_mask_margin 1.27)
-			(uuid "07e5f147-0c91-45c6-a299-b5ab37122931")
+			(solder_mask_margin 1.625)
+			(uuid "5b4e1998-15ff-4124-aa8d-1752814cc574")
 		)
 		(pad "" np_thru_hole circle
 			(at 32.6 2.9 90)
-			(size 2.2 2.2)
-			(drill 2.2)
+			(size 1.5 1.5)
+			(drill 2.75)
 			(layers "F&B.Cu" "*.Mask")
-			(solder_mask_margin 1.27)
-			(uuid "dfe60398-36bb-489b-b236-9f3f3de4b5e5")
+			(solder_mask_margin 1.625)
+			(uuid "c69d7c7c-d01e-4d40-bf77-a6c05b30ac73")
 		)
 	)
 	(footprint "Whackberry_Parts_Library:Adafruit_USB_Type_C_Breakout_Board"
@@ -6778,6 +6778,17 @@
 		(uuid "9fee6303-73eb-4203-be5f-b496d91dffb3")
 	)
 	(gr_circle
+		(center 42.625 165)
+		(end 45.625 165)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill solid)
+		(layer "B.Mask")
+		(uuid "b17d3bd2-0c2f-4180-bf6f-dde0a938b7a3")
+	)
+	(gr_circle
 		(center 116 23)
 		(end 119 23)
 		(stroke
@@ -6840,6 +6851,17 @@
 		(fill solid)
 		(layer "F.Mask")
 		(uuid "0ef3a2e7-db52-45e7-ac4f-130cdc7cf732")
+	)
+	(gr_circle
+		(center 42.625 165)
+		(end 45.625 165)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill solid)
+		(layer "F.Mask")
+		(uuid "2174bd88-22b8-4149-a0a5-edde99181ce0")
 	)
 	(gr_line
 		(start 148 147.4)
@@ -7514,6 +7536,17 @@
 		(layer "Edge.Cuts")
 		(uuid "51b1789f-2629-4d09-bbba-f2754135876e")
 	)
+	(gr_circle
+		(center 42.625 165)
+		(end 44 165)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "55cb025f-e5ae-4dd1-b44a-0b84ff5b4712")
+	)
 	(gr_line
 		(start 74 21)
 		(end 74 19.5)
@@ -7608,6 +7641,17 @@
 		)
 		(layer "Edge.Cuts")
 		(uuid "7135849d-0ab3-4b42-8e5d-6c0ef011bfbc")
+	)
+	(gr_circle
+		(center 131.855 34.7)
+		(end 137.855 34.7)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "7195c776-e7c0-4fa8-a3d9-d4edb6d66cb7")
 	)
 	(gr_line
 		(start 86 40)
@@ -9656,7 +9700,7 @@
 			)
 		)
 	)
-	(gr_text "whackberry v0.1"
+	(gr_text "whackberry v0.2"
 		(at 143 163 0)
 		(layer "F.SilkS")
 		(uuid "85527016-c9cb-422d-96f1-51524c2cabe7")

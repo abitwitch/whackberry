@@ -44,10 +44,11 @@ To set up a device, follow the instructions in each section of this readme from 
 - Male-male pin headers [link](https://www.adafruit.com/product/3009)
 - USB Type C Breakout Board [link](https://www.adafruit.com/product/4090)
 - SD card reader - SanDisk MobileMate USB 3.0 Reader [link](https://shop.sandisk.com/en-ca/products/accessories/memory-card-readers/sandisk-quickflow-microsd-usb-a-memory-card-reader?sku=SDDR-B731-GN6NN)
+- One M4 nut and bolt (to attach CardKB)
 - Solder and an soldering iron
 
 ## PCB
-There PCB (Printed Circuit Board) design is included in this repository. This can be ordered online for a PCB manufacturer. 
+There PCB (Printed Circuit Board) design is included in this repository. This can be ordered online for a PCB manufacturer. If you want to forgo the case, you can order 2 boards and use the second with the one with standoffs to protect the device. 
 
 **Schematic**
 ![Schematic showing all connections for the PCB](pcb/images/schematic.png "Schematic of the PCB")
@@ -60,6 +61,56 @@ There PCB (Printed Circuit Board) design is included in this repository. This ca
 
 **Back view**
 ![Render of the back of the PCB](pcb/images/pcb_back.png "Back of the PCB")
+
+## Assembly guide
+
+This guide assumes you have some experince with soldering. Locational references (up, down, left, right) assume the PCB is upright with the logo facing you. The logo side is the front of the board, the other side is the back. 
+### Prepare parts
+1. Break the Male-male pin headers into 2 7 pin pieces and 1 8 pin piece
+2. Solder the QTpy to the two 7 pin headers with the pins facing away from the side with the USB port on it.
+3. Repeat the previous step for the Raspberry Pi Zero, and USB-c Breakout board. 
+4. Break the POGO pins into 2 single pins and 1 pieces with 2 still attatched pins.
+
+### Attach USB-c Breakout board
+1. Use a M2.5 hex nut as a space between the USB-c breakout board and the main PCB, with the USB-c breakour board on the back of the main PCB. Secure the breakout board in place with more M2.5 nuts and screws
+2. Clip of excess pin length from the pins of the USB-c breakout board headers and then solder the pins in place
+
+### Attach QTpy
+1. Place the QTpy in place on the back of the main PCB
+2. Clip of excess pin length from the pins of the QTpy headers and then solder the pins in place
+
+### Attach Raspberry Pi Zero
+1. Solder the 2 attached pogo pins below the main headed pins in the Raspberry Pi Zero footprint. The pins should be facing the back of the board
+2. Use 6mm long F-F hex standoffs and screws to attach the Raspberry Pi Zero fo the back of the main PCB. The pogo pins should be making contect with the Raspberry Pi Zero, and the main header pins should slightly protrude through the main PCB. 
+3. Solder all the main header pins into place.
+
+### Other soldered-in pieces
+1. Solder the GROVE Female Header onto the back of the main PCB
+2. Solder the USB Type-A Jack onto the back of the main PCB
+3. Insert the 5-way nav switch on the front of the PCB and solder in the pins
+4. Repeat step above for both buttons below the 5-wav nav switch
+5. Insert the Resistor on the back of the main PCB, clip excess pin lenth, and solder into place
+6. Repeat step above for the IR-Reciever and the IR LED
+
+### Attach the camera module
+1. The mounting holes on the camera module are slightly smaller than M2.5 screws. You will either need to largen the holes are buy different hardware.
+2. Use 6mm long F-F hex standoffs to attatch the camera to the back of the main PCB
+
+### Attach CardKB
+1. Use the M4 nut and bolt to attach the CardKB to the front of the main PCB
+
+### Cables
+1. Connect the Camera module to the Raspberry Pi Zero
+2. Connect the CardKB to the main PCB GROVE header
+3. Use the DYI HDMI cable to connect the display to the Raspberry Pi Zero
+
+### Protection plate
+Only do this if you are not making a 3D printed case
+1. Choose 4 or 5 well distributed, unused, and accessible mounting holes and insert into each a M2.5 10mm Screw into an unused PCB (with nothing else solder or attached to it)
+2. To the back of each of the screws, screw on a 6mm long F-F hex standoff untill snug
+3. To the still protruding screws, screw on a 8mm long F-F hex standoff untill snug
+4. Place the this PCB on the main on being careful not to pitch any cables
+5. Screw the two boards together with M2.5 4mm Screws into the standoffs
 
 
 ## Setup guide
@@ -253,7 +304,7 @@ This is meant to act as either an off site backup or a way to share all your dat
    8. You can use the "Send" button to send to any address. Start with a small amount to make sure everything is working.
 
 ## Case
-There is a 3D printable case included in this repository to help manage the cables and protect the devices.
+There is a 3D printable case included in this repository to help manage the cables and protect the devices. This case is yet to be printed and tested, so it likely we need to be altered and iterated. 
 
 **Front of case**
 ![3D render of the front of the case](case/exports/preview_front.png "Front of case")
