@@ -121,7 +121,7 @@ This part can be done on any trusted computer connected to the internet
 2. Select Legacy, 32-bit - Debian Bullseye (released 2024-10-22)
 3. Flash the SD card and then access the files on the SD card
 4. Set up the display
-   1. Setup the display. Under `bootfs > config.txt`, add the following lines (more info [here](https://learn.adafruit.com/adafruit-5-800x480-tft-hdmi-monitor-touchscreen-backpack/raspberry-pi-config))
+   1. Setup the display. Under `bootfs > config.txt` if accessing from a SD Card reader or `\boot\config.txt` if accessing from the OS, add the following lines (more info [here](https://learn.adafruit.com/adafruit-5-800x480-tft-hdmi-monitor-touchscreen-backpack/raspberry-pi-config))
        ```
        hdmi_group=2
        hdmi_mode=87
@@ -129,7 +129,7 @@ This part can be done on any trusted computer connected to the internet
        hdmi_drive=1
        max_usb_current=1
        ```
-   2. Enable i2c. Under `bootfs > config.txt`, uncomment "dtparam=i2c_arm=on". Follow instructions [here](https://raspberrypi.stackexchange.com/questions/83457/can-i-enable-i2c-before-first-boot)
+   2. Enable i2c. In the same `config.txt` file, uncomment "dtparam=i2c_arm=on". Follow instructions [here](https://raspberrypi.stackexchange.com/questions/83457/can-i-enable-i2c-before-first-boot)
 
 ### 2.00: Configure the OS
 I suggest doing the configuartion from another pi with internet. Plug the SD card into a internet-connected Raspberry Pi and boot it. Follow the commands to set up your account and apply any updates. You can use a less secure password if you want, the more import one will be the one you use when setting up a GPG key. Reboot the device.
@@ -144,28 +144,29 @@ I suggest doing the configuartion from another pi with internet. Plug the SD car
 3. In subsequent boots, if you want a GUI, enter `startx` into the terminal
 
 #### 2.03: Updrade all apps / install new apps
-1. In teminal: `sudo apt update && sudo apt full-upgrade` (tried to see if would fix chromium on zero)
+1. In teminal: `sudo apt update && sudo apt full-upgrade`
 2. Install password manager `sudo apt-get install pass`
 3. Install password manager GUI `sudo apt-get install qtpass`
 4. Install a game (helpful for using the system to build up randomness) `sudo apt-get install ninvaders`
 5. Install 7z for secure ziped exports: 'sudo apt-get install p7zip-full'
-6. Install circuit python: `sudo pip3 install --break-system-packages adafruit-blinka`
+6. Install circuit python: `sudo pip3 install adafruit-blinka`
 7. Install PyUserInput for mouse: `sudo pip3 install PyUserInput pynput`
 8. Install web3 for ethereum wallet generation: `sudo pip3 install web3`
 
 
 #### 2.04: Install Electum
 1. Go to [https://electrum.org/#download](https://electrum.org/#download)
-2. Follow the instructions for "Installation from Python sources" (tested with version 4.5.8)
-3. For consistency create and install to `~/electrum` folder
+2. `mkdir ~/electrum`, then `cd ~/electrum`
+3. Follow the instructions for "Installation from Python sources" (tested with version 4.5.8)
 
 #### 2.05: Copy Etherium wallet script
 1. `mkdir ~/cryptowallet`
 2. Copy `cryptowallet/gen-eth-wallet.py` from this repo to `~/cryptowallet/gen-eth-wallet.py` on the raspberry pi
+3. `chmod +x gen-eth-wallet.py`
 
 #### 2.06: CarKB setup
-- Follow instructions [here](https://github.com/ian-antking/cardkb)
-- *add `sudo` to `modprobe uinput`
+1. `mkdir ~/cardkb`, then `cd ~/cardkb`
+2. Follow instructions [here](https://github.com/ian-antking/cardkb) (Note: add `sudo` to `modprobe uinput`)
 
 #### 2.07: Camera Setup
 - Just plug and play
@@ -173,24 +174,21 @@ I suggest doing the configuartion from another pi with internet. Plug the SD car
 - `libcamera-jpeg -o /path/to/file.jpg` to take a picture
 
 #### 2.08: Set up 5-way navi mouse
-Wiring
-1. Connect 3.3v output from the Raspberri Pi to the common pin. For me, the was the pin farthest from the little "L" on the back of the switch
-2. Connect 10k ohm resesistors to all the remaining pins and attatch to GPIO pins on the PI
-Software
-1. 'sudo nano /etc/xdg/lxsession/LXDE-pi/autostart`
-2. Add this line to the end of the file, then save and exit: `@/home/user/navmouse/mouselauncher.sh`
-3. `mkdir /home/user/navmouse`
-4. Copy `navmouse/mouse.py` and `navmouse/navmouselauncher.sh` from this repo to `/home/user/navmouse`
-5. `sudo chmod +x /home/user/navmouse/*`
+1. `mkdir ~/navmouse`, then `cd ~/navmouse`
+2. Copy `navmouse/mouse.py` and `navmouse/navmouselauncher.sh` from this repo to `~/navmouse` on the raspberry pi
+3. `chmod +x *`
+4. 'sudo nano /etc/xdg/lxsession/LXDE-pi/autostart`
+5. Add this line to the end of the file, then save and exit: `@/home/user/navmouse/mouselauncher.sh`
 
 #### 2.09: Infrared Transmitter
 1. Create a RAM disk for storing output:
-   1. Add `newramdisk  /mnt/ramdisk  tmpfs  rw,size=1M  0   0` to `/etc/fstab``mkdir /home/user/ir-sender`
-2. Copy `ir-protocol/ir-sender` from this repo to the folder `/home/user/ir-sender`
-3. Copy `ir-protocol/ir-sender-gui` from this repo to the folder `/home/user/Desktop/ir-sender-gui`
-4. `chmod +x /home/user/ir-sender`
-5. `chmod +x /home/user/Desktop/ir-sender-gui`
-6. Add these lines `/home/user/.profile`
+   1. Add `newramdisk  /mnt/ramdisk  tmpfs  rw,size=1M  0   0` to `/etc/fstab`
+2. `mkdir ~/ir-sender`
+2. Copy `ir-protocol/ir-sender` from this repo to the folder `~/ir-sender`
+3. Copy `ir-protocol/ir-sender-gui` from this repo to the folder `~/Desktop/ir-sender-gui`
+4. `chmod +x ~/ir-sender`
+5. `chmod +x ~/Desktop/ir-sender-gui`
+6. Add these lines `~/.profile`
    ```
    if [ -d "$HOME/ir-sender" ] ; then
    PATH="$PATH:$HOME/ir-sender"
@@ -215,9 +213,8 @@ On a PC connected to the Pico
 #### 2.11: Copy over the utility scripts
 1. `mkdir ~/utilities`
 2. Copy `utilities/exportbackup.sh` from this repo to `~/utilities/exportbackup.sh` on the raspberry pi
-3. `sudo chmod +x ~/utilities/exportbackup.sh`
-4. Copy `utilities/importfromcsv.py` from this repo to `~/utilities/importfromcsv.py` on the raspberry pi
-5. `sudo chmod +x ~/utilities/importfromcsv.py`
+3. Copy `utilities/importfromcsv.py` from this repo to `~/utilities/importfromcsv.py` on the raspberry pi
+4. `sudo chmod +x ~/utilities/*`
 
 #### 2.12: Test the system
 1. Power down the raspberry pi you're using for setup. Move the SD card to the offline raspberry pi. 
