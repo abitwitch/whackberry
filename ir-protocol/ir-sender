@@ -12,7 +12,7 @@ import sys
 
 #Encryption params
 crypt_enctrypred=True
-crypt_key="/home/user/ir-sender/publickey.pem"
+crypt_key=f"{os.path.expanduser('~')}/ir-sender/publickey.pem"
 crypt_key_size=512
 crypt_max_message_len=int(crypt_key_size/8)-11
 if crypt_enctrypred:
