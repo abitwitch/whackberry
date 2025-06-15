@@ -178,24 +178,30 @@ I suggest doing the configuartion from another pi with internet. Plug the SD car
 2. Copy `navmouse/mouse.py` and `navmouse/navmouselauncher.sh` from this repo to `~/navmouse` on the raspberry pi
 3. `chmod +x *`
 4. 'sudo nano /etc/xdg/lxsession/LXDE-pi/autostart`
-5. Add this line to the end of the file, then save and exit: `@/home/user/navmouse/mouselauncher.sh`
+5. Add this line to the end of the file, then save and exit: `@/home/{name of user}/navmouse/navmouselauncher.sh`
+TODO: Fix this section
 
 #### 2.09: Infrared Transmitter
 1. Create a RAM disk for storing output:
-   1. Add `newramdisk  /mnt/ramdisk  tmpfs  rw,size=1M  0   0` to `/etc/fstab`
-2. `mkdir ~/ir-sender`
-2. Copy `ir-protocol/ir-sender` from this repo to the folder `~/ir-sender`
-3. Copy `ir-protocol/ir-sender-gui` from this repo to the folder `~/Desktop/ir-sender-gui`
-4. `chmod +x ~/ir-sender`
-5. `chmod +x ~/Desktop/ir-sender-gui`
-6. Add these lines `~/.profile`
+   1. Add `newramdisk  /mnt/ramdisk  tmpfs  rw,size=8M  0  0` to `/etc/fstab` (*Note, you must replace each set of spaces with a tab*)
+2. Configuration
+   1. `sudo nano /boot/config.txt`
+   2. Add a line with `dtoverlay=gpio-ir-tx,gpio_pin=18` to the file, then save and exit
+   3. `sudo nano /etc/modules`
+   4. Add a line with `lirc_dev` to the file, then save and exit
+3. `mkdir ~/ir-sender`
+4. Copy `ir-protocol/ir-sender` from this repo to the folder `~/ir-sender`
+5. Copy `ir-protocol/ir-sender-gui` from this repo to the folder `~/Desktop/ir-sender-gui`
+6. `chmod +x ~/ir-sender`
+7. `chmod +x ~/Desktop/ir-sender-gui`
+8. Add these lines `~/.profile`
    ```
    if [ -d "$HOME/ir-sender" ] ; then
    PATH="$PATH:$HOME/ir-sender"
    fi
    ```
-7. Generate new key: `ir-sender --genkey`
-8. Copy the contents of the json and use it when setting up the Infrared Reciever
+9. Generate new key: `ir-sender --genkey`
+10. Copy the contents of the json and use it when setting up the Infrared Reciever
 
 
 #### 2.10: Infrared Reciever

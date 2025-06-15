@@ -3,13 +3,13 @@ from pynput.mouse import Button, Controller
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
 time_wait=0.1
-mas_speed=5 #pixels per time wait
+max_speed=25 #pixels per time wait
 leftPin=15
 rightPin=23
 upPin=19
 downPin=13
 centerPin=21
-rightclickPin=27
+rightclickPin=29
 GPIO.setup(leftPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(rightPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(upPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
@@ -18,7 +18,7 @@ GPIO.setup(centerPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(rightclickPin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 centerPin_prevval=GPIO.input(centerPin)==GPIO.HIGH
-rightclick_prevval=GPIO.input(rightclick)==GPIO.HIGH
+rightclick_prevval=GPIO.input(rightclickPin)==GPIO.HIGH
 mouseReady=False
 moving_streak=0
 prevInput=0
