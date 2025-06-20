@@ -29,6 +29,6 @@ with open(sys.argv[1],'r') as csvfile:
     if url.strip()!="":
       addtopass(f"{category}/{name}.url",url)
     if notes.strip()!="":
-      addtopass(f"W{category}/{name}.notes",notes)
+      addtopass(f"{category}/{name}.notes",notes)
 print("Completed.")
 
