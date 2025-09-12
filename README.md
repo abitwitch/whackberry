@@ -273,6 +273,7 @@ Only perform these steps when you're done setting up the device and ready to nev
 **Password manager**
 - To add a password: `pass insert path/to/name`
 - To generate a password: `pass generate path/to/name`
+- To find a password: `pass find myaccount`
 - To add metadata: `pass insert path/to/name.meta` (there are other oiptions, this is just a suggestion)
 - To send a password to the QT py, `pass show path/to/name | ir-sender`
 - To edit a password, `pass edit path/to/name`
