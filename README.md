@@ -1,7 +1,16 @@
 # WhackberryPi
 Disconnected Cyberdeck for password management.
 
-Features:
+![Front of device](images/front.png "Front of device")
+![Back of device](images/back.png "Back of device")
+
+![Left side of device](images/left_side.png "Left side of device")
+![Right side of device](images/right_side.png "Right side of device")
+
+![Inside of device](images/inside.png "Inside of device")
+
+
+## Features:
 - Disconnected computer (with display) with no wireless connectivity on any part of the device
 - QWERTY keyboard with access to most standard symbols
 - A mouse for navigating the OS in GUI mode
@@ -9,7 +18,7 @@ Features:
 - A Camera to take pictures that are unable to reach the internet (useful for QR backup codes of 2FA apps)
 - A disconnected microcontroller that is able to transmit data from the disconnected computer to another computer using a data diode
 
-How the data diode works:
+## How the data diode works:
 1. The disconnected computer has a special command for transmitting data (`ir-sender`). This program can take standard input in bash.
 2. The program encrypts the input. *NOTE* that the hardware only suport very weak and out-of-date encryption. Although it may provide a small layer of security, it should not be relied upon. This means anyone able to read the IR led blinking from inside the case, may be able to eventually decypt the messages. This seems like a low-level risk.
 3. The program break the message into packets then into pulses and used the IR LED light transmit the password. Since there is no way to read messages from the LED, this is a one way communication. This is the data diode and it uses the "fire and forget" principle. This means errors in reading the message is possible. A check sum is part of the protocol to account for this possible error.
@@ -18,7 +27,7 @@ How the data diode works:
 5. The signal is recieved, decapsulated, combined, and de-crypted. The checksum is verified before decryption and the process will only continue if the checksum and decryption are successful.
 6. When plugged into a computer, the air-gapped microcontroller acts as a keyboard and the message recieved is transmitted as keystrokes to the computer.
 
-Setup:
+# Setup:
 To set up a device, follow the instructions in each section of this readme from top to bottom. 
 
 ## Main Hardware
