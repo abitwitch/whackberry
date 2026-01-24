@@ -202,6 +202,9 @@ TODO: Fix this section
    ```
 9. Generate new key: `ir-sender --genkey`
 10. Copy the contents of the json and use it when setting up the Infrared Reciever
+11. For ease of use, add an alias for `ir-sender`
+   1. Edit `~/.bashrc`
+   2. Add this line to the bottom: `alias irs=ir-sender`
 
 
 #### 2.10: Infrared Reciever
@@ -263,16 +266,12 @@ Only perform these steps when you're done setting up the device and ready to nev
 
 **Password manager**
 - To add a password: `pass insert path/to/name`
+- To find a password: `pass find name`
 - To generate a password: `pass generate path/to/name`
 - To add metadata: `pass insert path/to/name.meta` (there are other oiptions, this is just a suggestion)
-- To send a password to the QT py, `pass show path/to/name | ir-sender`
+- To send a password to the QT py, `pass show path/to/name | irs`
 - To edit a password, `pass edit path/to/name`
 - To use the password manager gui: `qtpass`
-
-**Import csv to password manager**
-1. Modify the script here: `~/utilities/importfromcsv.py` to match the fields in the CSV from your password manager
-2. Run `python3 ~/utilities/importfromcsv.py /path/to/passwords.csv`
-3. After successfully importing the passwords, delete the csv `rm /path/to/passwords.csv`
 
 **Saving a encrypted image**
 1. Take a picture `libcamera-jpeg -o /mnt/ramdisk/imagename.jpg` *note, raw image will not persist on reboot
@@ -284,10 +283,15 @@ Only perform these steps when you're done setting up the device and ready to nev
 
 **Creating a full backup**
 This is meant to act as either an off site backup or a way to share all your data.
-1. Safely procure a un-used micro SD card. This prevent any contamination of your disconnected system.
+1. Safely procure a un-used micro SD card. This will prevent any contamination of your disconnected system.
 2. Create a backup. Run the script under `~/utilities/exportbackup.sh`
 3. Follow the prompts
 4. Copy the resulting file to the SD Card.
+
+**Import csv to password manager**
+1. Modify the script here: `~/utilities/importfromcsv.py` to match the fields in the CSV from your password manager
+2. Run `python3 ~/utilities/importfromcsv.py /path/to/passwords.csv`
+3. After successfully importing the passwords, delete the csv `rm /path/to/passwords.csv`
 
 ## Accessing cold wallets (online) 
 1. Use `ir-sender` to send the target private key from the disconnected raspberry pi to a computer connect to the internet. Make sure to note any private keys or seeds being transfered. They are no longer totaly secure.

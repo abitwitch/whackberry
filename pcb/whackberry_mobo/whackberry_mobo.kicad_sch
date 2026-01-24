@@ -1535,6 +1535,391 @@
 				)
 			)
 		)
+		(symbol "Whackberry_Symbols_Library:EG2208"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "S"
+				(at -7.62 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Value" "EG2208"
+				(at -7.62 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Footprint" "Whackberry_Parts_Library:SW_EG2208"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PARTREV" "C"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "E-Switch"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "MAXIMUM_PACKAGE_HEIGHT" "5.0 mm"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "STANDARD" "Manufacturer Recommendations"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(symbol "EG2208_0_0"
+				(rectangle
+					(start -7.62 -5.08)
+					(end 7.62 5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy -7.62 -2.54) (xy -3.81 -2.54)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -7.62 0) (xy -3.81 0)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -7.62 2.54) (xy -3.81 2.54)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 7.62 -2.54) (xy 3.81 -2.54)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 7.62 0) (xy 3.81 0)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 7.62 2.54) (xy 3.81 2.54)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 -1.905) (xy -3.81 -3.175) (xy -2.54 -2.54) (xy -3.81 -1.905)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 0.635) (xy -3.81 -0.635) (xy -2.54 0) (xy -3.81 0.635)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 3.175) (xy -3.81 1.905) (xy -2.54 2.54) (xy -3.81 3.175)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 -3.175) (xy 3.81 -1.905) (xy 2.54 -2.54) (xy 3.81 -3.175)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 -0.635) (xy 3.81 0.635) (xy 2.54 0) (xy 3.81 -0.635)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 1.905) (xy 3.81 3.175) (xy 2.54 2.54) (xy 3.81 1.905)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 1.905) (xy -2.54 3.175) (xy -1.27 3.175) (xy -1.27 -0.635) (xy -2.54 -0.635) (xy -2.54 0.635)
+						(xy -1.905 0.635) (xy -1.905 1.905) (xy -2.54 1.905)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 0.635) (xy 2.54 -0.635) (xy 1.27 -0.635) (xy 1.27 3.175) (xy 2.54 3.175) (xy 2.54 1.905)
+						(xy 1.905 1.905) (xy 1.905 0.635) (xy 2.54 0.635)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(pin passive line
+					(at -12.7 2.54 0)
+					(length 5.08)
+					(name "~"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 0 0)
+					(length 5.08)
+					(name "~"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -2.54 0)
+					(length 5.08)
+					(name "~"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 2.54 180)
+					(length 5.08)
+					(name "~"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 0 180)
+					(length 5.08)
+					(name "~"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 -2.54 180)
+					(length 5.08)
+					(name "~"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "Whackberry_Symbols_Library:GroveFemaleHeader_114020164"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -3257,13 +3642,13 @@
 		(at 193.04 40.64)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "ca18ffb0-62ff-4b99-bf80-c91f574e9a0e")
+		(uuid "c09cad75-9c20-443b-804e-ac03a1379fc3")
 	)
 	(junction
-		(at 252.73 24.13)
+		(at 252.73 39.37)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "fdf4bcaf-5985-49d2-bc70-3cf2dbce7633")
+		(uuid "e40fba00-a479-4623-8d26-130fbec9c02a")
 	)
 	(wire
 		(pts
@@ -3327,6 +3712,16 @@
 	)
 	(wire
 		(pts
+			(xy 214.63 55.88) (xy 250.19 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0d7c7da5-2d90-4b5a-be66-bcd79473dce7")
+	)
+	(wire
+		(pts
 			(xy 137.16 33.02) (xy 137.16 38.1)
 		)
 		(stroke
@@ -3347,7 +3742,7 @@
 	)
 	(wire
 		(pts
-			(xy 250.19 21.59) (xy 250.19 17.78)
+			(xy 250.19 92.71) (xy 250.19 55.88)
 		)
 		(stroke
 			(width 0)
@@ -3357,7 +3752,7 @@
 	)
 	(wire
 		(pts
-			(xy 265.43 149.86) (xy 265.43 73.66)
+			(xy 264.16 149.86) (xy 264.16 142.24)
 		)
 		(stroke
 			(width 0)
@@ -3404,6 +3799,16 @@
 			(type default)
 		)
 		(uuid "239ff73d-3321-4eaf-a406-1482493f872d")
+	)
+	(wire
+		(pts
+			(xy 219.71 36.83) (xy 199.39 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "250689ad-8405-416c-ae54-84db3221d447")
 	)
 	(wire
 		(pts
@@ -3507,7 +3912,7 @@
 	)
 	(wire
 		(pts
-			(xy 257.81 148.59) (xy 257.81 73.66)
+			(xy 256.54 148.59) (xy 256.54 142.24)
 		)
 		(stroke
 			(width 0)
@@ -3557,7 +3962,7 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 149.86) (xy 265.43 149.86)
+			(xy 138.43 149.86) (xy 264.16 149.86)
 		)
 		(stroke
 			(width 0)
@@ -3637,13 +4042,23 @@
 	)
 	(wire
 		(pts
-			(xy 261.62 29.21) (xy 261.62 40.64)
+			(xy 260.35 100.33) (xy 260.35 110.49)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "6e9b6ab1-6735-4312-8ce6-2540cbd65d10")
+	)
+	(wire
+		(pts
+			(xy 252.73 95.25) (xy 252.73 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "702908aa-0244-4b24-923c-cc774c9d0df9")
 	)
 	(wire
 		(pts
@@ -3657,7 +4072,7 @@
 	)
 	(wire
 		(pts
-			(xy 256.54 26.67) (xy 256.54 40.64)
+			(xy 255.27 97.79) (xy 255.27 110.49)
 		)
 		(stroke
 			(width 0)
@@ -3727,16 +4142,6 @@
 	)
 	(wire
 		(pts
-			(xy 207.01 17.78) (xy 207.01 40.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "87264dfb-b92c-407f-864e-8a4136a2a836")
-	)
-	(wire
-		(pts
 			(xy 142.24 97.79) (xy 109.22 97.79)
 		)
 		(stroke
@@ -3774,16 +4179,6 @@
 			(type default)
 		)
 		(uuid "8f40d9de-d6ab-4d1c-a877-2255669ed2ee")
-	)
-	(wire
-		(pts
-			(xy 207.01 40.64) (xy 193.04 40.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9186d9b6-32b9-4248-bbba-adc7c04c997d")
 	)
 	(wire
 		(pts
@@ -3847,16 +4242,6 @@
 	)
 	(wire
 		(pts
-			(xy 252.73 13.97) (xy 252.73 24.13)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a1966c53-f4a4-48a0-a02b-554efd62cc91")
-	)
-	(wire
-		(pts
 			(xy 134.62 30.48) (xy 134.62 35.56)
 		)
 		(stroke
@@ -3907,6 +4292,16 @@
 	)
 	(wire
 		(pts
+			(xy 219.71 39.37) (xy 214.63 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aec95b44-5c1d-4d9a-9149-e8c954d2fdbf")
+	)
+	(wire
+		(pts
 			(xy 128.27 44.45) (xy 74.93 44.45)
 		)
 		(stroke
@@ -3937,6 +4332,16 @@
 	)
 	(wire
 		(pts
+			(xy 199.39 40.64) (xy 193.04 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b5965124-53b5-4ecb-8448-8a8802f17736")
+	)
+	(wire
+		(pts
 			(xy 148.59 72.39) (xy 140.97 72.39)
 		)
 		(stroke
@@ -3944,6 +4349,26 @@
 			(type default)
 		)
 		(uuid "b937f217-3fb2-4f97-b46a-de6e88c285da")
+	)
+	(wire
+		(pts
+			(xy 214.63 39.37) (xy 214.63 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b9a40841-1553-4663-a947-590102cfed4d")
+	)
+	(wire
+		(pts
+			(xy 245.11 13.97) (xy 245.11 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bdf56ff3-d1ad-4a86-a30a-3bcf45d9eda7")
 	)
 	(wire
 		(pts
@@ -3997,7 +4422,7 @@
 	)
 	(wire
 		(pts
-			(xy 245.11 24.13) (xy 252.73 24.13)
+			(xy 246.38 95.25) (xy 252.73 95.25)
 		)
 		(stroke
 			(width 0)
@@ -4027,7 +4452,27 @@
 	)
 	(wire
 		(pts
-			(xy 252.73 24.13) (xy 266.7 24.13)
+			(xy 245.11 39.37) (xy 252.73 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d2e2e496-61ce-412a-81ad-4762a88bc723")
+	)
+	(wire
+		(pts
+			(xy 199.39 36.83) (xy 199.39 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d835c155-5a14-49a0-af81-4d541b290669")
+	)
+	(wire
+		(pts
+			(xy 252.73 39.37) (xy 265.43 39.37)
 		)
 		(stroke
 			(width 0)
@@ -4037,7 +4482,7 @@
 	)
 	(wire
 		(pts
-			(xy 245.11 29.21) (xy 261.62 29.21)
+			(xy 246.38 100.33) (xy 260.35 100.33)
 		)
 		(stroke
 			(width 0)
@@ -4047,7 +4492,7 @@
 	)
 	(wire
 		(pts
-			(xy 179.07 13.97) (xy 252.73 13.97)
+			(xy 179.07 13.97) (xy 245.11 13.97)
 		)
 		(stroke
 			(width 0)
@@ -4077,7 +4522,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 148.59) (xy 257.81 148.59)
+			(xy 139.7 148.59) (xy 256.54 148.59)
 		)
 		(stroke
 			(width 0)
@@ -4087,7 +4532,7 @@
 	)
 	(wire
 		(pts
-			(xy 266.7 24.13) (xy 266.7 40.64)
+			(xy 265.43 39.37) (xy 265.43 110.49)
 		)
 		(stroke
 			(width 0)
@@ -4124,16 +4569,6 @@
 			(type default)
 		)
 		(uuid "eaf0c331-9b89-400c-8e54-a2441bd970ae")
-	)
-	(wire
-		(pts
-			(xy 250.19 17.78) (xy 207.01 17.78)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "eed0128d-305c-4e0e-ba03-3b990ad54adb")
 	)
 	(wire
 		(pts
@@ -4177,7 +4612,7 @@
 	)
 	(wire
 		(pts
-			(xy 245.11 26.67) (xy 256.54 26.67)
+			(xy 246.38 97.79) (xy 255.27 97.79)
 		)
 		(stroke
 			(width 0)
@@ -4207,7 +4642,7 @@
 	)
 	(wire
 		(pts
-			(xy 245.11 21.59) (xy 250.19 21.59)
+			(xy 246.38 92.71) (xy 250.19 92.71)
 		)
 		(stroke
 			(width 0)
@@ -4621,7 +5056,7 @@
 	)
 	(symbol
 		(lib_id "LED:LD271")
-		(at 262.89 73.66 0)
+		(at 261.62 142.24 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4630,7 +5065,7 @@
 		(fields_autoplaced yes)
 		(uuid "5146df66-7df1-4238-9d74-c700aa0be2bf")
 		(property "Reference" "IR-LED-1"
-			(at 261.747 66.04 0)
+			(at 260.477 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4638,7 +5073,7 @@
 			)
 		)
 		(property "Value" "LD271"
-			(at 261.747 68.58 0)
+			(at 260.477 137.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4646,7 +5081,7 @@
 			)
 		)
 		(property "Footprint" "LED_THT:LED_D5.0mm_IRGrey"
-			(at 262.89 69.215 0)
+			(at 261.62 137.795 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4655,7 +5090,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.alliedelec.com/m/d/40788c34903a719969df15f1fbea1056.pdf"
-			(at 261.62 73.66 0)
+			(at 260.35 142.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4664,7 +5099,7 @@
 			)
 		)
 		(property "Description" "940nm IR-LED, 5mm"
-			(at 262.89 73.66 0)
+			(at 261.62 142.24 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4941,7 +5376,7 @@
 	)
 	(symbol
 		(lib_id "Interface_Optical:TSOP348xx")
-		(at 261.62 50.8 90)
+		(at 260.35 120.65 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4950,7 +5385,7 @@
 		(fields_autoplaced yes)
 		(uuid "856ec7c8-a80c-4b34-a638-2982c40f854c")
 		(property "Reference" "IR-Re-1"
-			(at 269.24 51.2648 90)
+			(at 267.97 121.1148 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4959,7 +5394,7 @@
 			)
 		)
 		(property "Value" "TSOP348xx"
-			(at 269.24 53.8048 90)
+			(at 267.97 123.6548 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4968,7 +5403,7 @@
 			)
 		)
 		(property "Footprint" "OptoDevice:Vishay_MOLD-3Pin"
-			(at 271.145 52.07 0)
+			(at 269.875 121.92 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4977,7 +5412,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.vishay.com/docs/82489/tsop322.pdf"
-			(at 254 34.29 0)
+			(at 252.73 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4986,7 +5421,7 @@
 			)
 		)
 		(property "Description" "IR Receiver Modules for Remote Control Systems"
-			(at 261.62 50.8 0)
+			(at 260.35 120.65 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5014,7 +5449,7 @@
 	)
 	(symbol
 		(lib_id "Whackberry_Symbols_Library:QTPy")
-		(at 236.22 16.51 0)
+		(at 237.49 87.63 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5023,7 +5458,7 @@
 		(fields_autoplaced yes)
 		(uuid "89aa41ab-7977-49b5-a4fe-580b0e8c0a4a")
 		(property "Reference" "QTpy-1"
-			(at 236.22 16.51 0)
+			(at 237.49 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5031,7 +5466,7 @@
 			)
 		)
 		(property "Value" "~"
-			(at 236.22 19.05 0)
+			(at 237.49 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5039,7 +5474,7 @@
 			)
 		)
 		(property "Footprint" "Whackberry_Parts_Library:QT_Py"
-			(at 236.22 16.51 0)
+			(at 237.49 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5048,7 +5483,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 236.22 16.51 0)
+			(at 237.49 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5057,7 +5492,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 236.22 16.51 0)
+			(at 237.49 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5566,6 +6001,127 @@
 			(project ""
 				(path "/efde2cb3-16ef-4cc9-81c7-d9f2adf33283"
 					(reference "LCD-1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Whackberry_Symbols_Library:EG2208")
+		(at 232.41 39.37 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cb4af162-b587-4acb-924d-29c01786a209")
+		(property "Reference" "S1"
+			(at 232.41 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "EG2208"
+			(at 232.41 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Whackberry_Parts_Library:SW_EG2208"
+			(at 232.41 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 232.41 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 232.41 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PARTREV" "C"
+			(at 232.41 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "E-Switch"
+			(at 232.41 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" "5.0 mm"
+			(at 232.41 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "STANDARD" "Manufacturer Recommendations"
+			(at 232.41 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "f0fa86ee-066a-4f86-90ff-2c1a83b2fbc4")
+		)
+		(pin "5"
+			(uuid "3b6ecd6a-7437-4099-a736-8c5c63a72bc3")
+		)
+		(pin "2"
+			(uuid "2866371d-9b85-404c-a541-2c361a9a10ed")
+		)
+		(pin "4"
+			(uuid "6c2db7ad-731a-49d4-aca0-ea13995d921b")
+		)
+		(pin "1"
+			(uuid "ac918976-96fc-4f49-93a9-a9290ad61cbe")
+		)
+		(pin "6"
+			(uuid "7dc07ebb-f1a4-45ba-984d-faa49ffdab4a")
+		)
+		(instances
+			(project ""
+				(path "/efde2cb3-16ef-4cc9-81c7-d9f2adf33283"
+					(reference "S1")
 					(unit 1)
 				)
 			)
