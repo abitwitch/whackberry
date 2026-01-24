@@ -44,6 +44,7 @@ To set up a device, follow the instructions in each section of this readme from 
 - Male-male pin headers [link](https://www.adafruit.com/product/3009)
 - USB Type C Breakout Board [link](https://www.adafruit.com/product/4090)
 - SD card reader - SanDisk MobileMate USB 3.0 Reader [link](https://shop.sandisk.com/en-ca/products/accessories/memory-card-readers/sandisk-quickflow-microsd-usb-a-memory-card-reader?sku=SDDR-B731-GN6NN)
+- DPDT switch [link](https://www.digikey.ca/en/products/detail/e-switch/EG2208/301963)
 - One M4 nut and bolt (to attach CardKB)
 - Solder and an soldering iron
 
