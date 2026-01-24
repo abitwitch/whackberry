@@ -229,6 +229,13 @@ On a PC connected to the Pico
 8. Copy the contents of the `ir-receiver-code.py` to `code.py`
 9. Create a new file at the top level called `private_key.json` and put the json contents in it generated when setting up the Infrared Transmitter
 
+Optional: If you want a second reciever for any reason (for example, you don't want to plug the same reciever into every computer you need a password on), here's how to set up a secondary one.
+1. Buy a secondary RP2040 device. This guide will assume you're using [the Waveshare RP2040-One](https://www.waveshare.com/product/rp2040-one.htm).
+2. Solder on a IR (Infrared) Receiver (the same one listed earlier in this project). Attach GND to GND, V to 3.3V, and OUT to GP0. 
+3. Follow the same steps above (for the main Infrared Reciever), with these minor changes
+   1. In the `code.py` file, change `board.MOSI` to `board.GP0` and `board.NEOPIXEL` to `board.GP16`
+   2. Copy the `private_key.json` from the original RP2040 device to this one
+
 #### 2.11: Copy over the utility scripts
 1. `mkdir ~/utilities`
 2. Copy `utilities/exportbackup.sh` from this repo to `~/utilities/exportbackup.sh` on the raspberry pi
