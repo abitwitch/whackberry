@@ -273,8 +273,12 @@ Only perform these steps when you're done setting up the device and ready to nev
 5. Generate Bitcoin BTC wallet
    1. Start electrum with this command `~/electrum/Electrum-4.5.8/run_electrum`
    2. This application will run slowly. Be prepared to wait a few minutes between screens.
-   3. Follow prompts and be sure to save the new seed to the password manager (`pass`)
+   3. Follow prompts and be sure to save the new seed to the password manager (`pass`). Using a password is recommended, you can generate and store one it `pass`, then copy it to the clipboard by using `pass -c {Folder/name}`
    4. In the "Recieve" tab, create a never expiring request and save the public address to `pass` as well. You can use this to send money to the wallet.
+   5. Export the private keeys to `pass`
+      1. Under "Wallet" > "Private keys", select "Export"
+      2. Specify the file location to somewhere on `/mnt/ramdisk` (this way it will not presist on disk as plain text)
+      3. Run `cat /mnt/ramdisk/{filename-of-exported-keys.csv} | pass insert {Folder/name} -m`
 6. Generate Etherium ETH wallet
    1. Run the command `python3 ~/cryptowallet/gen-eth-wallet.py`
    2. Enter both the private key and the public key to the `pass` password manager
