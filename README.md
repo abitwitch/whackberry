@@ -309,8 +309,8 @@ Only perform these steps when you're done setting up the device and ready to nev
 This is meant to act as either an off site backup or a way to share all your data.
 1. Safely procure a un-used micro SD card. This will prevent any contamination of your disconnected system.
 2. Create a backup. Run the script under `~/utilities/exportbackup.sh`
-3. Follow the prompts
-4. Copy the resulting file to the SD Card.
+3. Follow the prompts. Note that with a lot of passwords, the "Exporting passwords" step can take a long time to run (last time was ~30 minutes for me).
+4. Copy or move the resulting file to the SD Card.
 
 **Import csv to password manager**
 1. Modify the script here: `~/utilities/importfromcsv.py` to match the fields in the CSV from your password manager
