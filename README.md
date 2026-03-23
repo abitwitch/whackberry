@@ -278,7 +278,8 @@ Only perform these steps when you're done setting up the device and ready to nev
    5. Export the private keeys to `pass`
       1. Under "Wallet" > "Private keys", select "Export"
       2. Specify the file location to somewhere on `/mnt/ramdisk` (this way it will not presist on disk as plain text)
-      3. Run `cat /mnt/ramdisk/{filename-of-exported-keys.csv} | pass insert {Folder/name} -m`
+      3. Add a column to the CSV titled "BurntPrivKey", and set it to "No" for all rows
+      4. Run `cat /mnt/ramdisk/{filename-of-exported-keys.csv} | pass insert {Folder/name} -m`
 6. Generate Etherium ETH wallet
    1. Run the command `python3 ~/cryptowallet/gen-eth-wallet.py`
    2. Enter both the private key and the public key to the `pass` password manager
@@ -317,6 +318,45 @@ This is meant to act as either an off site backup or a way to share all your dat
 2. Run `python3 ~/utilities/importfromcsv.py /path/to/passwords.csv`
 3. After successfully importing the passwords, delete the csv `rm /path/to/passwords.csv`
 
+## Sending recieving Bitcoin (btc)
+You can send and recieve btc without exposing your private keys to the internet.
+
+### Recieving:
+1. Open Electrum
+2. Go to the recieving tab and create a request. Make one of your "burnt" addresses it not being used. Send btc using any app to that address.
+
+### Sending:
+Option 1: signing a transaction (requires manual transcription)
+1. On a computer connected to the internet
+   1. Install Electrum and wait for it to sync
+   2. Go to File > New/Restore
+   3. Select "Import Bitcoin addresses or private keys"
+   4. Enter the public addess (NOT the private keys!) from the Whackberry device (you can do that using this command: `echo bitcoin_public_address | irs`)
+   5. Under the send tab, enter the address you want to send to, the amount, then click "Pay..."
+   6. Set the transation fee and click "OK"
+   7. Click the share button and "Copy to clipboard..." (paste in a text editor)
+2. On the Whackberry
+   1. Open Electrum
+   2. On the top menu, "Tools" > "Load transation" > "From text"
+   3. The camera will not work with the Electrum app, so you will have to manually copy the transation to the whackberry (make no mistakes, good luck).
+   4. "Sign" the transation
+   5. Click the share button and "Copy to clipboard..." (recommend pasting it somewhere like `/mnt/ramdisk/txn.txt`)
+   6. Transfer that file back to the internet connected computer: `cat /mnt/ramdisk/txn.txt | irs` (you'll want to open a text editor on the internet connected computer to capture the contents of the file) 
+3. On a computer connected to the internet
+   1. In Electrum, on the top menu, "Tools" > "Load transation" > "From text"
+   2. Paste in the transation contents you transfered from the whackberry.
+   3. Click "Broadcast"
+Option 2: Burning a Private key
+1. Mark the private key as "burnt" on the Whackberry: `pass edit path/to/privatekeys`. I recommend labeling it in the Electrum GUI too (under the addresses tab)
+2. Copy the ONLY THE BURNT private keys to a internet connected computer
+   1. Test a command to ONLY get the burnt addresses: `pass show path/to/privatekeys | grep ,Yes` (Make 100% sure it's only outputing the private keys you want to burn)
+   2. Copy the ket to the internet connected computer: ``pass show path/to/privatekeys | grep ,Yes | irs`
+3. On the internet connected computer
+   1. Follow steps 1.1 to 1.3 under "Option 1"
+   2. Enter the private key
+   3. Transfer all the bitcoin to your intended addresses. Keep in mind you can also transfer to other addresses on the Whackberry that are not yet burnt.
+
+
 ## Accessing cold wallets (online) 
 1. Use `ir-sender` to send the target private key from the disconnected raspberry pi to a computer connect to the internet. Make sure to note any private keys or seeds being transfered. They are no longer totaly secure.
 2. For Bitcion BTC:
@@ -344,6 +384,9 @@ There is a 3D printable case included in this repository to help manage the cabl
 ![3D render of the back of the case](case/exports/preview_back.png "Back of case")
 
 
+## Trouble shooting
+- Opening the camera causes the system to crash
+   - This is likely a power issue to the camera. First try adding these two lines to the "/boot/config.txt" file; `over_voltage=2` and `force_turbo=1`. If the problem persists, lower the blacklight one the display by cutting the trace in between the two pads labeled "Open for -25mA" (more info [here](https://learn.adafruit.com/adafruit-5-800x480-tft-hdmi-monitor-touchscreen-backpack/pinouts)).
 
 ## Future work
 - setup HID to act as a security key
